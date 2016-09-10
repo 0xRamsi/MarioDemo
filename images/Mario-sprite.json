@@ -1,0 +1,233 @@
+{"frames": {
+
+"tube.png":
+{
+	"frame": {"x":1151,"y":617,"w":138,"h":271},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":271},
+	"sourceSize": {"w":138,"h":271},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"ground.png":
+{
+	"frame": {"x":660,"y":165,"w":352,"h":24},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":271},
+	"sourceSize": {"w":138,"h":271},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioStand-small":
+{
+	"frame": {"x":850,"y":124,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk1-small":
+{
+	"frame": {"x":866,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk2-small":
+{
+	"frame": {"x":882,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk3-small":
+{
+	"frame": {"x":898,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioJump-small":
+{
+	"frame": {"x":931,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioDuck-small":
+{
+	"frame": {"x":752,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+
+
+
+
+"marioStand":
+{
+	"frame": {"x":662,"y":124,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk1":
+{
+	"frame": {"x":679,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk2":
+{
+	"frame": {"x":696,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioWalk3":
+{
+	"frame": {"x":714,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioJump":
+{
+	"frame": {"x":733,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioDuck":
+{
+	"frame": {"x":752,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"marioDead":
+{
+	"frame": {"x":771,"y":125,"w":16,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
+	"sourceSize": {"w":16,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"Goomba1":
+{
+	"frame": {"x":660,"y":195,"w":16,"h":15},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"Goomba2":
+{
+	"frame": {"x":677,"y":195,"w":16,"h":15},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"GoombaDead":
+{
+	"frame": {"x":694,"y":195,"w":16,"h":18},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"3dground.png":
+{
+	"frame": {"x":1,"y":1,"w":1289,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":15,"w":1289,"h":876},
+	"sourceSize": {"w":1320,"h":910},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"cloud-small":
+{
+	"frame": {"x":961,"y":490,"w":155,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":15,"w":105,"h":138},
+	"sourceSize": {"w":105,"h":138},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"cloud-big":
+{
+	"frame": {"x":662,"y":490,"w":277,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":15,"w":105,"h":138},
+	"sourceSize": {"w":105,"h":138},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"blue-sky":
+{
+	"frame": {"x":2,"y":114,"w":640,"h":480},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":15,"w":640,"h":480},
+	"sourceSize": {"w":640,"h":480},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"emptyBrick":
+{
+	"frame": {"x":734,"y":195,"w":16,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"firebar1":
+{
+	"frame": {"x":714,"y":195,"w":8,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":8,"h":16},
+	"sourceSize": {"w":8,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"firebar2":
+{
+	"frame": {"x":722,"y":195,"w":8,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":8,"h":16},
+	"sourceSize": {"w":8,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+}
+}
+}

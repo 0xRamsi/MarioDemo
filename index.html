@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="prototype-1.6.0.2.js"></script>
+	<script type="text/javascript" src="Box2d.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="Util.js"></script>
+	<script type="text/javascript" src="AssetLoader.js"></script>
+	<script>
+	window.onload = function(){
+		var canvas;
+		try{
+			canvas = document.getElementById('canvasDebug');
+			canvas.width = 1200;
+			canvas.height = 144;
+		}catch(e){/* ignor */};
+		canvas = document.getElementById('canvas');
+		canvas.width = 1200;
+		canvas.height = 720;
+		canvas.setAttribute('tabindex', 1);
+		setTimeout(function(){AssetLoader.loadLevel('mario');}, 20);
+	}
+	</script>
+</head>
+<body id='body'>
+	
+	<canvas id='canvas' tabindex='1'></canvas>
+	<canvas id='canvasDebug' tabindex='1'></canvas>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{
+	"code": [
+		"SoundManager.js",
+		"PhysicsEngineClass.js",
+		"InputEngine.js",
+		"Background.js",
+		"Entities.js",
+		"Animation.js",
+		"Mario.js",
+		"Obstacles.js",
+		"FireBar.js",
+		"EnemiesEntities.js",
+		"Render.js",
+		"GameEngine.js"
+	],
+	
+	"assets": [
+		"images/ralphyrobot.png",
+		"images/brick_wall.png",
+		
+		"images/Mario-sprite.png"
+	],
+
+	"world": {
+		"background": {
+			"bg": "blue-sky",
+			"objects": [
+				{"img": "cloud-small", "pos": {"x":35,"y":3}},
+				{"img": "cloud-big", "pos": {"x":20,"y":4}},
+				{"img": "cloud-small", "pos": {"x":50,"y":3}},
+				{"img": "cloud-small", "pos": {"x":70,"y":5}},
+				{"img": "cloud-big", "pos": {"x":90,"y":4}},
+				{"img": "cloud-small", "pos": {"x":110,"y":4.4}}
+			]
+		},
+		"gravity": {"x": 0, "y": 250},
+		"viewpoint": "top",
+		"ground": [
+			{"x":1, "y": 27, "w": 30, "h": 2},
+			{"x":31, "y": 27, "w": 30, "h": 2},
+			{"x":61, "y": 27, "w": 30, "h": 2},
+			{"x":91, "y": 27, "w": 30, "h": 2},
+			{"x": 260, "y": 27, "w": 30, "h": 2},
+			{"x": 300, "y": 27, "w": 30, "h": 2}
+		],
+		"camera": {
+			"StartPos": null,
+			"Bounds": {"startX": 0, "startY": 0, "endX": 307, "endY": 100},
+			"viewSize": {"w": 48, "h": 28.8}
+		}
+	},
+	
+	"entities": {
+		"Mario": {
+			"pos": {"x": 35, "y": 27},
+			"properties": null,
+			"type": "MarioBig"
+		},
+		"f": {
+			"pos": {"x": 40, "y": 10},
+			"properties": null,
+			"type": "FireBar"
+		},
+		"Wall": {
+			"pos": {"x": 30, "y": 10},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Wall2": {
+			"pos": {"x": 30, "y": 20},
+			"properties": {"rotation": 1},
+			"type": "Wall"
+		},
+		"w": {
+			"pos": {"x": 60, "y": 10},
+			"properties": null,
+			"type": "Wall"
+		},
+		"W1": {
+			"pos": {"x": 90, "y": 10},
+			"properties": null,
+			"type": "Wall"
+		},
+		"W2": {
+			"pos": {"x": 120, "y": 10},
+			"properties": null,
+			"type": "Wall"
+		},
+		"W3": {
+			"pos": {"x": 150, "y": 10},
+			"properties": null,
+			"type": "Wall"
+		},
+		"Tube1": {
+			"pos": {"x": 40, "y": 21.1},
+			"properties": null,
+			"type": "Tube"
+		},
+		"Tube2": {
+			"pos": {"x": 60, "y": 21.1},
+			"properties": null,
+			"type": "Tube"
+		},
+		"Goomba1": {
+			"pos": {"x": 50, "y": 26.5},
+			"properties": null,
+			"type": "Goomba"
+		}
+	}
+}

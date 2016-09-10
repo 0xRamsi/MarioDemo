@@ -1,0 +1,16 @@
+{"frames": {
+
+"robot":
+{
+	"frame": {"x":0,"y":0,"w":458,"h":489},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":489},
+	"sourceSize": {"w":458,"h":489},
+	"pivot": {"x":0,"y":0}
+}
+},
+"meta": {
+	"some": "stuff"
+}
+}

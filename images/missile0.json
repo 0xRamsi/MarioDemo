@@ -1,0 +1,16 @@
+{"frames": {
+
+"missile0":
+{
+	"frame": {"x":0,"y":0,"w":1268,"h":331},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1268,"h":331},
+	"sourceSize": {"w":1269,"h":331},
+	"pivot": {"x":0,"y":0}
+}
+},
+"meta": {
+	"some": "stuff"
+}
+}
