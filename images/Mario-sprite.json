@@ -20,63 +20,54 @@
 },
 "marioStand-small":
 {
-	"frame": {"x":850,"y":124,"w":16,"h":32},
+	"frame": {"x":850,"y":140,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "marioWalk1-small":
 {
-	"frame": {"x":866,"y":125,"w":16,"h":32},
+	"frame": {"x":866,"y":140,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "marioWalk2-small":
 {
-	"frame": {"x":882,"y":125,"w":16,"h":32},
+	"frame": {"x":882,"y":140,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "marioWalk3-small":
 {
-	"frame": {"x":898,"y":125,"w":16,"h":32},
+	"frame": {"x":898,"y":140,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "marioJump-small":
 {
-	"frame": {"x":931,"y":125,"w":16,"h":32},
+	"frame": {"x":931,"y":140,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"marioDuck-small":
-{
-	"frame": {"x":752,"y":125,"w":16,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":32},
-	"sourceSize": {"w":16,"h":32},
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
 
 
 
 
-"marioStand":
+"marioStand-big":
 {
 	"frame": {"x":662,"y":124,"w":16,"h":32},
 	"rotated": false,
@@ -85,7 +76,7 @@
 	"sourceSize": {"w":16,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"marioWalk1":
+"marioWalk1-big":
 {
 	"frame": {"x":679,"y":125,"w":16,"h":32},
 	"rotated": false,
@@ -94,7 +85,7 @@
 	"sourceSize": {"w":16,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"marioWalk2":
+"marioWalk2-big":
 {
 	"frame": {"x":696,"y":125,"w":16,"h":32},
 	"rotated": false,
@@ -103,7 +94,7 @@
 	"sourceSize": {"w":16,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"marioWalk3":
+"marioWalk3-big":
 {
 	"frame": {"x":714,"y":125,"w":16,"h":32},
 	"rotated": false,
@@ -112,7 +103,7 @@
 	"sourceSize": {"w":16,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"marioJump":
+"marioJump-big":
 {
 	"frame": {"x":733,"y":125,"w":16,"h":32},
 	"rotated": false,
@@ -121,7 +112,7 @@
 	"sourceSize": {"w":16,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"marioDuck":
+"marioDuck-big":
 {
 	"frame": {"x":752,"y":125,"w":16,"h":32},
 	"rotated": false,

@@ -33,6 +33,11 @@ RendererClass = Class.create({
 	},
 	
 	requestCameraPos: function(x, y){
+		if(isNaN(x) || x == undefined){
+			console.log('The players position is not valid:', x);
+			return;		// Leave the camera unchanged.
+		}
+		
 		this.camera.pos.x = Math.max(
 			this.camera.halfSize.w,
 			Math.min(this.camera.bounds.endX, x)

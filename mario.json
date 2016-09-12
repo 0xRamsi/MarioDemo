@@ -54,7 +54,7 @@
 		"Mario": {
 			"pos": {"x": 35, "y": 27},
 			"properties": null,
-			"type": "MarioBig"
+			"type": "MarioSmall"
 		},
 		"f": {
 			"pos": {"x": 40, "y": 10},
