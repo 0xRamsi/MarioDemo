@@ -27,9 +27,10 @@ MushroomClass = Class.create(EntityClass, {
 	
 	update: function(){
 		if(this.isDead){
-			if(this.hitPlayer)
+			if(this.hitPlayer){
 				// The mushroom may die without touching mario by falling of the world.
-				this.game.spawnAnimation('ChangeMarioSize', this.getPosition(), null);
+				this.game.player.grow();
+			}
 			this.die();
 			return;
 		}

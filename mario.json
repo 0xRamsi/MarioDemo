@@ -115,6 +115,12 @@
 		},
 		
 		"testMushroom": {
+			"pos": {"x": 30, "y": 18},
+			"properties": null,
+			"type": "Mushroom"
+		},
+		
+		"testMushroom1": {
 			"pos": {"x": 20, "y": 10},
 			"properties": null,
 			"type": "Mushroom"

@@ -490,6 +490,7 @@ game.
 
 MarioSmallClass = Class.create(EntityClass, {
 	movingState: null,
+	hitBy: null,
 	
 	initialize: function($super, aGame, aPos, aProperties){
 		var props = {
@@ -517,9 +518,11 @@ MarioSmallClass = Class.create(EntityClass, {
 	},
 	
 	dieInGame: function(){
-		this.game.spawnAnimation('DyingMario', this.getPosition(), null);
 		this.die();
-		this.game.endTheGame();
+		if(this.hitBy == "Enemy"){
+			this.game.spawnAnimation('DyingMario', this.getPosition(), null);
+			this.game.endTheGame();
+		}
 	},
 	
 	update: function(){
@@ -584,6 +587,18 @@ MarioSmallClass = Class.create(EntityClass, {
 	
 	getImage: function(){
 		return this.movingState.getImage();
+	},
+	
+	grow: function(){
+		var pos = this.getPosition();
+		pos.y -= 1.6;
+		this.game.spawnAnimation('ChangeMarioSize', pos, null);
+		this.isDead = true;
+		this.hitBy = "Mushroom";
+		var pos = this.getPosition();
+		pos.y += 0.75;	// Big mario is 1.5 bigger.
+		var newPlayer = this.game.spawnEntity('MarioBig', pos, null);
+		this.game.player = newPlayer;
 	}
 });
 MarioSmallClass.State = {
@@ -762,6 +777,10 @@ MarioBigClass = Class.create(EntityClass, {
 	
 	getImage: function(){
 		return this.movingState.getImage();
+	},
+	
+	grow: function(){
+		// Do nothing - mario is big.
 	}
 });
 MarioBigClass.State = {
