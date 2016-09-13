@@ -193,15 +193,6 @@
 	"sourceSize": {"w":640,"h":480},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"emptyBrick":
-{
-	"frame": {"x":734,"y":195,"w":16,"h":16},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16},
-	"pivot": {"x":0.5,"y":0.5}
-},
 "firebar1":
 {
 	"frame": {"x":714,"y":195,"w":8,"h":16},
@@ -218,6 +209,24 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":146,"y":105,"w":8,"h":16},
 	"sourceSize": {"w":8,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"deadBlock":
+{
+	"frame": {"x":733,"y":194,"w":16,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"mushroom":
+{
+	"frame": {"x":751,"y":195,"w":16,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 }
 }

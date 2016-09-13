@@ -10,6 +10,7 @@
 		"Obstacles.js",
 		"FireBar.js",
 		"EnemiesEntities.js",
+		"Mushroom.js",
 		"Render.js",
 		"GameEngine.js"
 	],
@@ -105,6 +106,18 @@
 			"pos": {"x": 50, "y": 26.5},
 			"properties": null,
 			"type": "Goomba"
+		}
+		
+		, "testblock": {
+			"pos": {"x": 35, "y": 20},
+			"properties": null,
+			"type": "DeadBlock"
+		},
+		
+		"testMushroom": {
+			"pos": {"x": 35, "y": 10},
+			"properties": null,
+			"type": "Mushroom"
 		}
 	}
 }

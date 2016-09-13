@@ -129,7 +129,7 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 		
 		$super(aGame, gCachedData['marioStand'], aPos, props);
 		this.imgs = new MovingImagesClass(
-				[gCachedData['marioStand'],
+				[gCachedData['marioStand-big'],
 				gCachedData['marioStand-small']],
 				20);
 	},

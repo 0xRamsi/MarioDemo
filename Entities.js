@@ -132,28 +132,4 @@ InvisibleClass = Class.create({
 	destroy: function(){
 		this.owner.game.physEngine.world.DestroyBody(this.physBody);
 	}
-})
-
-TestClass = Class.create(EntityClass, {
-	initialize: function($super, aGame, aPos){
-		var props = {
-			physics: {
-				fixed: true,
-				size: {w: 1.5, h: 3}
-			},
-			userData: {
-				name: 'tester object'
-			},
-			other: {
-				zIndex: 110
-			}
-		}
-		gUtil.copyProperties(props, aProperties);
-		$super(aGame, gCachedData['marioJump'], aPos, props);
-		// [gCachedData['marioWalk1'], gCachedData['marioWalk2'], gCachedData['marioWalk3']];
-	},
-	
-	update: function(){
-		var dx = 0, dy = 0;
-	}
 });

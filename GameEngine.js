@@ -19,10 +19,13 @@ GameEngineClass = Class.create({
 		this.factory['Wall'] = BrickClass;
 		this.factory['Tube'] = TubeClass;
 		this.factory['Goomba'] = EnemyGoombaClass;
+		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
+		this.factory['DeadBlock'] = DeadBlockClass;
+		this.factory['Mushroom'] = MushroomClass;
+		// Animations
 		this.factory['DyingGoomba'] = DyingGoomba;
 		this.factory['DyingMario'] = DyingMario;
 		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
-		// this.factory['Test'] = TestClass;
 		
 		this.physEngine = new PhysicsEngineClass(worldProps.gravity);
 		this.SM = new SoundManager();

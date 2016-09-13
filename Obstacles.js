@@ -29,6 +29,14 @@ BrickClass = Class.create(ObsticleClass, {
 	}
 });
 
+DeadBlockClass = Class.create(ObsticleClass, {
+	initialize: function($super, aGame, aPos, aProperties){
+		aProperties.userData['name'] = 'Dead block';
+		aProperties.physics.size = {w: 1.5, h: 1.5};
+		$super(aGame, aPos, gCachedData['deadBlock'], aProperties);
+	}
+});
+
 
 SingleGroundPieceClass = Class.create(ObsticleClass, {
 	initialize: function($super, aGame, aPos, anImage, aProperties){
