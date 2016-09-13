@@ -8,6 +8,7 @@ maskBits are set to 0.
 
 AnimationClass = Class.create(EntityClass, {
 	time: 50,
+	game: null,
 	
 	initialize: function($super, aGame, anImage, aPos, aProperties){
 		var props = {
@@ -30,12 +31,14 @@ AnimationClass = Class.create(EntityClass, {
 		
 		gUtil.copyProperties(props, aProperties);
 		$super(aGame, anImage, aPos, props);
+		this.game = aGame;
 	},
 	
 	update: function(){
 		--this.time;
 		if(this.time == 0){
 			this.die();
+			this.game.paused = false;
 			return;
 		}
 	}
@@ -117,7 +120,6 @@ DyingMario = Class.create(AnimationClass, {
 ChangeMarioSizeClass = Class.create(AnimationClass, {
 	initialize: function($super, aGame, aPos, aProperties){
 		var props = {
-			// TODO: should be pausing the game!!
 			time: 180,
 			physics: {
 				size: {w: 1.5, h: 3}	//random;
@@ -128,6 +130,7 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 		}
 		
 		$super(aGame, gCachedData['marioStand'], aPos, props);
+		aGame.paused = true;
 		this.imgs = new MovingImagesClass(
 				[gCachedData['marioStand-big'],
 				gCachedData['marioStand-small']],
@@ -135,7 +138,6 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 	},
 	
 	getImage: function(){
-		console.log('hehe')
 		return this.imgs.getImage();
 	}
-})
+});

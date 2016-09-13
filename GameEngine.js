@@ -10,6 +10,7 @@ GameEngineClass = Class.create({
 	SM: null,
 	player: null,
 	renderer: null,
+	paused: false,
 	
 	initialize: function(worldProps){
 		this.factory['MarioSmall'] = MarioSmallClass;
@@ -82,7 +83,8 @@ GameEngineClass = Class.create({
 		this.renderer.requestCameraPos(p.x);
 		// if(0 == (--stepCounter)){stop();return;}
 		
-		this.physEngine.update();
+		if(!(this.paused))
+			this.physEngine.update();
 		this.renderer.draw(this.dynamicEntities.concat(this.staticEntities));
 	},
 	

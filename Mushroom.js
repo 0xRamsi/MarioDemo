@@ -1,6 +1,8 @@
 
 MushroomClass = Class.create(EntityClass, {
 	dir: 1,
+	isDead: false,
+	hitPlayer: false,
 	
 	initialize: function($super, aGame, aPos, aProperties){
 		var props = {
@@ -25,7 +27,9 @@ MushroomClass = Class.create(EntityClass, {
 	
 	update: function(){
 		if(this.isDead){
-			this.game.spawnAnimation('ChangeMarioSize', this.getPosition(), null);
+			if(this.hitPlayer)
+				// The mushroom may die without touching mario by falling of the world.
+				this.game.spawnAnimation('ChangeMarioSize', this.getPosition(), null);
 			this.die();
 			return;
 		}
@@ -49,11 +53,13 @@ MushroomClass = Class.create(EntityClass, {
 
 		var x = this.game.physEngine.understandTheContact(contact);
 
-		// If I hit Mario, he dies.
-		if(x.dir == 'right to' && other == this.game.player.physBody.GetBody())
-			this.game.player.isDead = true;
-		if(x.dir == 'above' && other == this.game.player.physBody.GetBody())
+		if(other == this.game.player.physBody.GetBody()){
+			// The animation cannot be spawned here and the mushroom cannnot be killed
+			// here, because we are in the middle of a game step from the physics
+			// engine.
 			this.isDead = true;
+			this.hitPlayer = true;
+		}
 
 		// If I hit a wall - change direction.
 		if(x.dir == 'right to'){

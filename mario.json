@@ -109,13 +109,13 @@
 		}
 		
 		, "testblock": {
-			"pos": {"x": 35, "y": 20},
+			"pos": {"x": 20, "y": 20},
 			"properties": null,
 			"type": "DeadBlock"
 		},
 		
 		"testMushroom": {
-			"pos": {"x": 35, "y": 10},
+			"pos": {"x": 20, "y": 10},
 			"properties": null,
 			"type": "Mushroom"
 		}
