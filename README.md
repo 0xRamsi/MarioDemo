@@ -3,6 +3,7 @@
 This is a simple JavaScript game, based on the classic Mario game. I built it while learning the Box2D physics engine.
 
 General things to bear in mind while going through the code.
+
 1. 'Box2D web' is being used as a physics engine. It means that stuff like gravity, collisions and movement are done by the physics engine, while the game logic only defines which objects can collide, or the direction and speed some object should move. The actual movement/application of force is done by the physics engine.
 2. Each game cycle consists of:
  * update all the entities (and remove entities marked as dead)
