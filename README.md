@@ -12,7 +12,7 @@ General things to bear in mind while going through the code.
 4. A few design patterns and programming styles are being used. To really understand some of the code you may want to have an idea about:
  1. State pattern
    * https://en.wikipedia.org/wiki/State_pattern
-     * https://sourcemaking.com/design_patterns/state
+    * https://sourcemaking.com/design_patterns/state
  2. Observer pattern
    * https://sourcemaking.com/design_patterns/observer
  3. Continuation-passing style
