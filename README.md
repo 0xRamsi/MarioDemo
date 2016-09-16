@@ -11,10 +11,10 @@ General things to bear in mind while going through the code.
 3. The `update` method is called by the main game loop, which will make adjustments to the entity (kill it/apply force to it/etc.). The on `onTouch` is called by a callback which the physics engine is doing it's work and will indicate that 2 entities have collided.
 4. A few design patterns and programming styles are being used. To really understand some of the code you may want to have an idea about:
  1. State pattern
-  * https://en.wikipedia.org/wiki/State_pattern
-  * https://sourcemaking.com/design_patterns/state
+   * https://en.wikipedia.org/wiki/State_pattern
+   * https://sourcemaking.com/design_patterns/state
  2. Observer pattern
-  * https://sourcemaking.com/design_patterns/observer
+   * https://sourcemaking.com/design_patterns/observer
  3. Continuation-passing style
-  * https://en.wikipedia.org/wiki/Continuation-passing_style
+   * https://en.wikipedia.org/wiki/Continuation-passing_style
   
