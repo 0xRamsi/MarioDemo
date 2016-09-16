@@ -2,7 +2,7 @@
 MushroomClass = Class.create(EntityClass, {
 	dir: 1,
 	isDead: false,
-	hitPlayer: false,
+	shouldInteract: false,
 	
 	initialize: function($super, aGame, aPos, aProperties){
 		var props = {
@@ -26,19 +26,18 @@ MushroomClass = Class.create(EntityClass, {
 	},
 	
 	update: function(){
+		if(this.shouldInteract)
+			this.game.player.interact(this);
+		
 		if(this.isDead){
-			if(this.hitPlayer){
-				// The mushroom may die without touching mario by falling of the world.
-				this.game.player.grow();
-			}
 			this.die();
 			return;
 		}
 		var dx = 0, dy = 0;
 		var body = this.physBody.GetBody();
-
+		
 		dx = this.dir * EnemyGoombaClass._speed;
-
+		
 		var speed = new this.game.physEngine.b2Vec2(dx, dy);
 		body.SetLinearVelocity(speed);
 	},
@@ -59,7 +58,7 @@ MushroomClass = Class.create(EntityClass, {
 			// here, because we are in the middle of a game step from the physics
 			// engine.
 			this.isDead = true;
-			this.hitPlayer = true;
+			this.shouldInteract = true;
 		}
 
 		// If I hit a wall - change direction.

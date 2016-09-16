@@ -2,6 +2,7 @@
 FireBarClass = Class.create(ObsticleClass, {
 	game: null,
 	ancor: null,
+	shouldInteract: false,
 	
 	getSpeed: function(){
 		return this._speed;
@@ -27,6 +28,8 @@ FireBarClass = Class.create(ObsticleClass, {
 		this.game = aGame;
 		this.imgs = new MovingImagesClass(
 			[gCachedData['firebar1'], gCachedData['firebar2']], 10);
+		
+		// Suspend the fire bar in the air and make it rotate.
 		var g = this.game.getGround().physBody.GetBody();
 		var body = this.physBody.GetBody();
 		var v = new Box2D.Common.Math.b2Vec2(body.GetPosition().x, body.GetPosition().y);
@@ -45,7 +48,12 @@ FireBarClass = Class.create(ObsticleClass, {
 		return this.imgs.getImage();
 	},
 	
-	update: function(){},
+	update: function(){
+		if(this.shouldInteract){
+			this.game.player.interact(this);
+			this.shouldInteract = false;
+		}
+	},
 	
 	onTouch: function(other, contact, impulse){
 		if(contact.GetManifold().m_pointCount == 0){
@@ -54,6 +62,6 @@ FireBarClass = Class.create(ObsticleClass, {
 
 		var x = this.game.physEngine.understandTheContact(contact);
 		if(other == this.game.player.physBody.GetBody())
-			this.game.player.isDead = true;
+			this.shouldInteract = true;
 	}
 });

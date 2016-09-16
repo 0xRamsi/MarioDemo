@@ -75,6 +75,10 @@ GameEngineClass = Class.create({
 	update: function(){
 		for(var i = 0; i < this.dynamicEntities.length; i++){
 			var element = this.dynamicEntities[i];
+			if(element.getPosition().y > 30){
+				console.log('out of range kill:', element)
+				element.isDead = true;
+			}
 			element.update();
 		}
 		// Calculate the cameras position
@@ -111,8 +115,8 @@ GameEngineClass = Class.create({
 		return newEntity;
 	},
 	
-	spawnAnimation: function(name, aPos, aProperties){
-		var newAnimation = new (this.factory[name])(this, aPos, aProperties);
+	spawnAnimation: function(name, aPos, aProperties, aCallback){
+		var newAnimation = new (this.factory[name])(this, aPos, aProperties, aCallback);
 		this.dynamicEntities.push(newAnimation);
 		return newAnimation;
 	},

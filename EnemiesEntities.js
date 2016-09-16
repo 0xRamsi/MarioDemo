@@ -54,8 +54,7 @@ EnemyGoombaClass = Class.create(EntityClass, {
 		
 		// If I hit Mario, he dies.
 		if(x.dir == 'right to' && other == this.game.player.physBody.GetBody()){
-			this.game.player.isDead = true;
-			this.game.player.hitBy = "Enemy";
+			this.game.player.interact(this);
 		}
 		if(x.dir == 'above' && other == this.game.player.physBody.GetBody())
 			this.isDead = true;

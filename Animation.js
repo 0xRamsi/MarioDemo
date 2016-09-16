@@ -9,8 +9,9 @@ maskBits are set to 0.
 AnimationClass = Class.create(EntityClass, {
 	time: 50,
 	game: null,
+	callback: null,
 	
-	initialize: function($super, aGame, anImage, aPos, aProperties){
+	initialize: function($super, aGame, anImage, aPos, aProperties, aCallback){
 		var props = {
 			physics: {
 				fixed: false,
@@ -30,8 +31,11 @@ AnimationClass = Class.create(EntityClass, {
 				this.time = 400;
 		
 		gUtil.copyProperties(props, aProperties);
+		
 		$super(aGame, anImage, aPos, props);
 		this.game = aGame;
+		if(aCallback)
+			this.callback = aCallback
 	},
 	
 	update: function(){
@@ -39,13 +43,15 @@ AnimationClass = Class.create(EntityClass, {
 		if(this.time == 0){
 			this.die();
 			this.game.paused = false;
+			if(this.callback)
+				this.callback();
 			return;
 		}
 	}
 });
 
 DyingGoomba = Class.create(AnimationClass, {
-	initialize: function($super, aGame, aPos, aProperties){
+	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 150,
 			physics: {
@@ -58,7 +64,7 @@ DyingGoomba = Class.create(AnimationClass, {
 		}
 		gUtil.copyProperties(props, aProperties);
 		
-		$super(aGame, gCachedData['GoombaDead'], aPos, props);
+		$super(aGame, gCachedData['GoombaDead'], aPos, props, aCallback);
 	},
 	
 	onTouch: function(other, contact, impulse){}
@@ -68,7 +74,7 @@ DyingMario = Class.create(AnimationClass, {
 	state: [],
 	joint: null,
 	
-	initialize: function($super, aGame, aPos, aProperties){
+	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 400,
 			physics: {
@@ -82,7 +88,7 @@ DyingMario = Class.create(AnimationClass, {
 		}
 		gUtil.copyProperties(props, aProperties);
 		this.state = [30, 30, 80];		// going up/hanging/down.
-		$super(aGame, gCachedData['marioDead'], aPos, props);
+		$super(aGame, gCachedData['marioDead'], aPos, props, aCallback);
 	},
 	
 	update: function(){
@@ -118,7 +124,7 @@ DyingMario = Class.create(AnimationClass, {
 });
 
 ChangeMarioSizeClass = Class.create(AnimationClass, {
-	initialize: function($super, aGame, aPos, aProperties){
+	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 180,
 			physics: {
@@ -128,8 +134,12 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 				name: 'change Mario size'
 			}
 		}
+		gUtil.copyProperties(props, aProperties);
 		
-		$super(aGame, gCachedData['marioStand'], aPos, props);
+		// TODO: Big mario and small mario are scalled to 1.5x3 world size, so the
+		// animation looks wired. Make one appear small and one big.
+		
+		$super(aGame, gCachedData['marioStand'], aPos, props, aCallback);
 		aGame.paused = true;
 		this.imgs = new MovingImagesClass(
 				[gCachedData['marioStand-big'],

@@ -53,12 +53,12 @@
 	
 	"entities": {
 		"Mario": {
-			"pos": {"x": 35, "y": 27},
+			"pos": {"x": 15, "y": 27},
 			"properties": null,
 			"type": "MarioSmall"
 		},
 		"f": {
-			"pos": {"x": 40, "y": 10},
+			"pos": {"x": 40, "y": 13},
 			"properties": null,
 			"type": "FireBar"
 		},
@@ -103,7 +103,7 @@
 			"type": "Tube"
 		},
 		"Goomba1": {
-			"pos": {"x": 50, "y": 26.5},
+			"pos": {"x": 35, "y": 26.5},
 			"properties": null,
 			"type": "Goomba"
 		}
@@ -115,13 +115,13 @@
 		},
 		
 		"testMushroom": {
-			"pos": {"x": 30, "y": 18},
+			"pos": {"x": 30, "y": 26},
 			"properties": null,
 			"type": "Mushroom"
 		},
 		
 		"testMushroom1": {
-			"pos": {"x": 20, "y": 10},
+			"pos": {"x": 20, "y": 26},
 			"properties": null,
 			"type": "Mushroom"
 		}
