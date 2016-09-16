@@ -1,4 +1,4 @@
-
+// Not used.
 Missle0Class = Class.create(EntityClass, {
 	dest: null,
 	sound: null,

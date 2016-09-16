@@ -1,7 +1,9 @@
+/*
+	The render class is resonsible to draw entities onto the canvas, and is the
+only object that will access the canvas.
+*/
 
 RendererClass = Class.create({
-	// entities : [],
-	// game: null,
 	camera: null,
 	physEngine: null,
 	
@@ -50,12 +52,14 @@ RendererClass = Class.create({
 	draw: function(entities){
 		var canvas = document.getElementById('canvas');
 		var ctx = canvas.getContext('2d');
+		// Clear the canvas.
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle  = "#000000";
 		
 		if(debug || sideMap)
 			this.physEngine.drawDebug();
 		
+		// Order by z-index
 		var zIndexArrays = {};
 		for(var i = 0; i < entities.length; i++){
 			var object = entities[i];
@@ -65,6 +69,7 @@ RendererClass = Class.create({
 			zIndexArrays[object.zIndex].push(object);
 		}
 		
+		// Draw
 		var keys = Object.keys(zIndexArrays);
 		keys.sort(function(a,b){return a-b;});
 		for(var i = 0; i < keys.length; i++){

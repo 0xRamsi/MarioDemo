@@ -2,8 +2,8 @@
 	AnimationClass is a class for animations, like Mario dying, bricks being 
 destroyed, and anything that happens in the world, but should not affect the 
 flow of physics.
-So this things have a physics body, so they are affecetd by gravity, but their 
-maskBits are set to 0.
+These objects have a physics body, so they are affecetd by gravity, but their 
+maskBits are set to 0 (will never collide with objects).
 */
 
 AnimationClass = Class.create(EntityClass, {

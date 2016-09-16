@@ -1,9 +1,8 @@
 /*
-	This file has background onject, which mimic physical
-objects, but do not have an entity in the physics engine.
-Simply because thye are for decoration and will never 
-affect the gamy physics, and putting them into the
-physicl world module would just slow things dowm.
+	This file has background onject, which mimic physical objects, but do not
+have an entity in the physics engine.
+Simply because thye are for decoration and will never affect the gamy physics,
+and putting them into the physical world module would just slow things down.
 */
 
 

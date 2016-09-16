@@ -1,3 +1,5 @@
+// This makes sure all `eval` calls are being executed in the global scope.
+// This is important for the asset loader.
 eval = (function(e) {
 	return function(expr) {
 		return e(expr);
@@ -5,13 +7,6 @@ eval = (function(e) {
 })(eval);
 
 gUtil = {
-	distance: function(p1, p2){
-		var dX = p2.x - p1.x;
-		var dY = p2.y - p1.y;
-	
-		return Math.sqrt(dX*dX + dY*dY);
-	}, 
-
 	xhrGet: function(reqUri, callback, type) {
 		var oReq = new XMLHttpRequest();
 		oReq.open("GET", reqUri, true);

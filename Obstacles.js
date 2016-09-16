@@ -46,6 +46,7 @@ SingleGroundPieceClass = Class.create(ObsticleClass, {
 
 GroundClass = {
 	makeGround: function(aGame, aBorders){
+		// This method is called while setting up the game.
 		var res = [];
 		for(var i = 0; i < aBorders.length; i++){
 			border = aBorders[i];

@@ -1,3 +1,16 @@
+/*
+	This object will respond to user input and store as in variables what the
+user is currently pressing.
+Entities that wish to react to user input will query this objects `actions`
+field, and decide how to behave.
+
+	Note that this design permits decoupling the key stroke from the action,
+which makes hardware adaption easy, but it also limits the set of actions
+available.
+This design is also used for fairness in multiplayer games. See:
+https://classroom.udacity.com/courses/cs255/lessons/52850040/concepts/1139048800923#
+*/
+
 Input = {
 	actions: {},
 	bindings: {},
@@ -54,15 +67,10 @@ Input = {
 	},
 	
 	onMouseMove: function(mouseEvent){
-		// Make robot face the mouse.
 		this.mousePos = this._getMousePos(mouseEvent);
 	},
 	
 	onMouseDown: function(mouseEvent){
-		// Spawn a missle at robot position and
-		// set its destination to be the mouseEvent
-		// coordinations.
-		
 		this.mousePos = this._getMousePos(mouseEvent);
 		this.actions['mouseClick'] = true;
 	},
@@ -80,18 +88,7 @@ Input = {
 		var ascii = keyEvent.key.charCodeAt(0);
 		this.actions[this.bindings[ascii]] = 0;
 	},
-	/*
-	calcAngle: function(){
-		var robot = this.game.player;
-		p1 = {
-			x: robot.getPosition().x,
-			y: robot.getPosition().y
-		};
-		p2 = this.mousePos;
-		var radians = Math.atan2(p2.y - p1.y, p2.x - p1.x);
-		this.game.rotate(this.game.player, radians);
-	},
-	*/
+	
 	bind: function (key, action) {
 		this.bindings[key] = action;
 	},

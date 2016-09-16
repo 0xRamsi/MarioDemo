@@ -1,3 +1,5 @@
+// Not used currently.
+
 AssetManager = {
 	gCacheData: {},
 	

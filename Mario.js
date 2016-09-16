@@ -1,3 +1,16 @@
+/*
+	This is the main charecter of the game.
+MarioClass is the main class which is subclassed by MarioSmallClass and
+MarioBigClass.
+Each of the subclasses makes use if the 'State pattern'.
+See: https://en.wikipedia.org/wiki/State_pattern
+	https://sourcemaking.com/design_patterns/state
+In addition there are a few methods called (via callbcaks) by the physics
+engine during a world.Step() is being executed, therefore changes are not
+applyed inside those methods, but a flag is set for the next time `update`
+is being called.
+*/
+
 MarioClass = Class.create(EntityClass, {
 	jumpForce: null,
 	speed: 6,		// This is a constant speed through the game.
@@ -43,7 +56,7 @@ MarioClass = Class.create(EntityClass, {
 			dx = this.speed;
 			this.facing = this.Directions.RIGHT;
 		}
-		if( Input.actions['jump'] && this.movingState.name != 'jump' ){
+		if( Input.actions['jump'] || Input.actions['move-up'] && this.movingState.name != 'jump' ){
 			body.ApplyForce(this._jumpForce, this.getPosition());
 		}
 
@@ -196,8 +209,7 @@ MarioSmallClass = Class.create(MarioClass, {
 	
 	shrink: function(){
 		this.die();
-		this.game.spawnAnimation('DyingMario', this.getPosition(), null);
-		this.game.endTheGame();
+		this.game.spawnAnimation('DyingMario', this.getPosition(), this.game.stop);
 	}
 });
 MarioSmallClass.State = {

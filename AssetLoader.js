@@ -1,6 +1,5 @@
 /*
-This is what I have to save for an 
-image object in the gCachedData hash.
+	This is what is being saved for an image object in the gCachedData hash.
 For now only the 'frame' element is used.
 
 img: img,
@@ -14,6 +13,13 @@ def: {
 },
 */
 
+/*
+	CPS (Continuation-passing Style) is used a lot here because it makes
+the work with callbacks (and async functions) a lot more convienent, but
+it needs some time to get your head around it.
+https://en.wikipedia.org/wiki/Continuation-passing_style
+*/
+
 var gCachedData = [];
 var gameLoop;
 
@@ -21,6 +27,7 @@ AssetLoader = {
 	currentGame: null,
 	
 	downloaders: {
+		// These are extentions assosiated with a method to download them.
 		'.js': function(file, save, count){
 			var c = function(response){
 				save(file, response.currentTarget.responseText);
@@ -160,8 +167,11 @@ AssetLoader = {
 			this.unloadLevel();
 		}
 		
-		// Load the code -> Eval the code (with defined order) -> Load assets.
-		// Then start the game.
+		// The following things should happen in that order:
+		// 1. Load the code
+		// 2. Eval the code (with inner order defined in the json file)
+		// 3. Load assets.
+		// 4. Start the game.
 		
 		var LoadTheLevel = function(filename, cont){
 			var c = (function(filename, cont){

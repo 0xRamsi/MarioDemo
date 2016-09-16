@@ -1,4 +1,17 @@
-// Global variables
+/*
+	This is the interface to the physics engine of the game. While Box2D is the
+actual physics engine, all the entities in the game interact with this API and
+not directly with the Box2D interface.
+
+	The `update` method calls `this.world.Step()` which is when the physics
+engine will advance for one cycle. This includes moving objects, detecting and
+solving collisions and executing callbacks if collisions are detected.
+Important: The Box2D manual states that while `world.Step()` is being excuted
+(including callbacks), no changes may be made to the bodies. Namely, they may
+not be created/destroied, no forces may be applied to the bodies. Instead a
+flag may be used to execute this kind of actions before the next invocation
+of `world.Step()`.
+*/
 
 PhysicsEngineClass = Class.create({
 	b2Math: Box2D.Common.Math.b2Math,

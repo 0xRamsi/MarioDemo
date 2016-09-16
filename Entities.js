@@ -1,3 +1,17 @@
+/*
+	EntityClass is the main class representing entities in the world. All the
+entities (except the background) subclass the `EntityClass`.
+Each entity has:
+	* `physBody` - A reference to the body in the physics engine.
+	* `img` - An object which has an image and drawing information which will be
+drawn by the renderer. All these images should have an entry in gCachedData.
+Note: Some entities will override the getImage() method, because they have
+alternating images which seem like movement.
+
+Entities have no position here, but are using the position given by the physics
+engine, this avoids inconsistency between what is rendered to the screen and
+what the physics engine is believing.
+*/
 
 EntityClass = Class.create({
 	physBody: null,		// Will be a Box2D body object
@@ -83,7 +97,6 @@ MovingImagesClass = Class.create({
 	getImage: function(){
 		this.counter = (this.counter + 1) % this.numberOfSteps;
 		if(this.counter == 0){
-			// this.counter = this.numberOfSteps;
 			this.imgIndex = (this.imgIndex + 1) % this.imgList.length;
 		}
 		return this.imgList[this.imgIndex];
@@ -104,32 +117,5 @@ CameraClass = Class.create({
 		}
 		this.bounds = aProperties.Bounds;
 		this.pos = startPos;
-	}
-});
-
-
-
-InvisibleClass = Class.create({
-	physBody: null,
-	owner: null,
-	
-	initialize: function(aOwner, aPos){
-		var pos = {x: aPos.x, y: aPos.y};		// Deep copy
-		var size = {x:1,y:1};					// Random size
-		var props = {
-			physics: {
-				fixed: true
-			},
-			userData: {
-				name: 'invisiable'
-			},
-			other: {}
-		};
-		this.owner  = aOwner;
-		this.physBody = aOwner.game.physEngine.createBox(pos, size, props);
-	},
-	
-	destroy: function(){
-		this.owner.game.physEngine.world.DestroyBody(this.physBody);
 	}
 });
