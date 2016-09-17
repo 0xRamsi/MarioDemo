@@ -31,11 +31,11 @@
 				{"img": "cloud-small", "pos": {"x":70,"y":5}},
 				{"img": "cloud-big", "pos": {"x":90,"y":4}},
 				{"img": "cloud-small", "pos": {"x":110,"y":4.4}},
-				{"img": "mountain", "pos": {"x": 33, "y": 25.4}},
+				{"img": "mountain", "pos": {"x": 43, "y": 25.4}},
 				{"img": "mountain", "pos": {"x": 88, "y": 25.4}},
 				{"img": "bush-small", "pos": {"x": 70, "y": 25.7}},
 				{"img": "bush-small", "pos": {"x": 108, "y": 25.7}},
-				{"img": "bush-big", "pos": {"x": 10, "y": 25.7}}
+				{"img": "bush-big", "pos": {"x": 17, "y": 25.7}}
 			]
 		},
 		"gravity": {"x": 0, "y": 250},
@@ -61,42 +61,42 @@
 			"type": "FireBar"
 		},
 		"Brick0": {
-			"pos": {"x": 23, "y": 16},
+			"pos": {"x": 23, "y": 17},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick1": {
-			"pos": {"x": 24.5, "y": 16},
+			"pos": {"x": 24.5, "y": 17},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick2": {
-			"pos": {"x": 26, "y": 14},
+			"pos": {"x": 26, "y": 15},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick3": {
-			"pos": {"x": 27.5, "y": 14},
+			"pos": {"x": 27.5, "y": 15},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick4": {
-			"pos": {"x": 29, "y": 14},
+			"pos": {"x": 29, "y": 15},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick5": {
-			"pos": {"x": 31, "y": 10},
+			"pos": {"x": 31, "y": 13},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick6": {
-			"pos": {"x": 32.5, "y": 10},
+			"pos": {"x": 32.5, "y": 13},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Brick7": {
-			"pos": {"x": 34, "y": 10},
+			"pos": {"x": 34, "y": 13},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},

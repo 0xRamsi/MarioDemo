@@ -8,7 +8,7 @@ method (if appropriate).
 
 AnimationClass = Class.create({
 	time: 50,
-	img: null,
+	imgs: null,
 	pos: null,
 	absolute: false,
 	name: null,
@@ -112,6 +112,8 @@ DyingMario = Class.create(AnimationClass, {
 });
 
 ChangeMarioSizeClass = Class.create(AnimationClass, {
+	state: 0,
+	
 	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 180,
@@ -130,6 +132,26 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 			aCallback);
 			
 		aGame.paused = true;
+	},
+	
+	getImage: function($super){
+		// $super();
+		++this.state;
+		
+		if(this.state < 20){
+			this.size = {w: 1.5, h: 1.5};
+			return gCachedData['marioStand-small']
+		}
+		
+		if(this.state < 40){
+			this.size = {w: 1.5, h: 3};
+			return gCachedData['marioStand-big'];
+		}
+		
+		if(this.state == 40){
+			this.state = 0;
+			return gCachedData['marioStand-big'];
+		}
 	}
 });
 
