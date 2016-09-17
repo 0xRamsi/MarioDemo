@@ -84,4 +84,28 @@ TubeClass = Class.create(ObsticleClass, {
 		aPos.y += props.physics.size.h/2;
 		$super(aGame, aPos, gCachedData['tube.png'], props);
 	}
-})
+});
+
+
+CastleClass = Class.create(ObsticleClass, {
+	initialize: function($super, aGame, aPos){
+		// aPos is considered the top left corner,
+		// so this will dictate the tubes height.
+		var props = {
+			physics: {size: {w: 11, h: 14}},
+			userData: {name: 'castle'}}
+		aPos.y += props.physics.size.h/2;
+		$super(aGame, aPos, gCachedData['castle'], props);
+	},
+	
+	onTouch: function(other, contact, impulse){
+		if(contact.GetManifold().m_pointCount == 0){
+			return;		// Just a sanity check, should not get here.
+		}
+		
+		// If I hit Mario, he wins.
+		if(other == this.game.player.physBody.GetBody()){
+			this.game.player.interact(this);
+		}
+	}
+});

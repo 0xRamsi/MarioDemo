@@ -211,9 +211,27 @@
 	"sourceSize": {"w":8,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
 },
+"fireworks":
+{
+	"frame": {"x":769,"y":194,"w":16,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":767,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "deadBlock":
 {
 	"frame": {"x":733,"y":194,"w":16,"h":16},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"castle":
+{
+	"frame": {"x":739,"y":227,"w":150,"h":176},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},

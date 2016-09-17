@@ -30,6 +30,9 @@ MarioClass = Class.create(EntityClass, {
 		}
 		if(this.isDead){
 			this.die();
+			if(this.getPosition().y > 30){
+				this.game.spawnAnimation('DyingMario', this.getPosition(), null, stop);
+			}
 		}
 		if(this.isImmune)
 			this.isImmune--;
@@ -89,7 +92,11 @@ MarioClass = Class.create(EntityClass, {
 		switch(other.physBody.GetBody().GetUserData().name){
 			case "mushroom":
 				this.dispatched.push(this.grow);
-				break;
+				return;
+			case "castle":
+				this.dispatched.push(this.finishLevel);
+				this.isImmune = 10;
+				return;
 			default:
 				// Do nothing
 		}
@@ -111,6 +118,11 @@ MarioClass = Class.create(EntityClass, {
 				console.log('unknown entity called "interact" on Mario. Name is:', other.physBody.GetBody().GetUserData().name);
 				break;
 		}
+	},
+	
+	finishLevel: function(){
+		this.game.spawnAnimation('Fireworks', null, null, stop);
+		this.die();
 	},
 	
 	onTouch: function(other, contact, impulse){
@@ -209,7 +221,7 @@ MarioSmallClass = Class.create(MarioClass, {
 	
 	shrink: function(){
 		this.die();
-		this.game.spawnAnimation('DyingMario', this.getPosition(), this.game.stop);
+		this.game.spawnAnimation('DyingMario', this.getPosition(), null, stop);
 	}
 });
 MarioSmallClass.State = {

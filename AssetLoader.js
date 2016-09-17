@@ -231,7 +231,7 @@ AssetLoader = {
 	unloadLevel: function(){
 		// TODO: Remove assets or not?
 		clearInterval(gameLoop);
-		this.currentGame.stop();
+		this.currentGame.prepareGameEnd();
 		gameLoop = null;
 	}
 };

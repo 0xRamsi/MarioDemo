@@ -9,6 +9,7 @@ GameEngineClass = Class.create({
 	physEngine: null,
 	SM: null,
 	player: null,
+	castle: null,
 	renderer: null,
 	paused: false,
 	
@@ -22,10 +23,12 @@ GameEngineClass = Class.create({
 		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
 		this.factory['DeadBlock'] = DeadBlockClass;
 		this.factory['Mushroom'] = MushroomClass;
+		this.factory['Castle'] = CastleClass;
 		// Animations
 		this.factory['DyingGoomba'] = DyingGoomba;
 		this.factory['DyingMario'] = DyingMario;
 		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
+		this.factory['Fireworks'] = FireworksClass;
 		
 		this.physEngine = new PhysicsEngineClass(worldProps.gravity);
 		this.SM = new SoundManager();
@@ -49,34 +52,22 @@ GameEngineClass = Class.create({
 			var e = this.spawnEntity(entities[name].type, entities[name].pos, entities[name].properties);
 			if(name == 'Mario')
 				this.player = e;
+			if(name == 'Castle')
+				this.castle = e;
 		}
 	},
 	
-	stop: function(){
+	prepareGameEnd: function(){
 		this.SM.stopAll();
 		Input.removeAllListeners();
 		setTimeout(function(){this.renderer.addText("Game Over");}.bind(this), 20);
 	},
 	
-	kill: function(entity){
-		for(var i = 0; i < this.dynamicEntities.length; i++){
-			if(entity == this.dynamicEntities[i])
-				break;
-		}
-		if(i==this.dynamicEntities.length){
-			console.log('Could not find entity to kill', entity);
-			return;
-		}
-		
-		this.dynamicEntities.splice(i, 1);
-		this.physEngine.removeBody(entity.physBody);
-	},
-	
 	update: function(){
+		console.log(this.dynamicEntities.length)
 		for(var i = 0; i < this.dynamicEntities.length; i++){
 			var element = this.dynamicEntities[i];
 			if(element.getPosition().y > 30){
-				console.log('out of range kill:', element)
 				element.isDead = true;
 			}
 			element.update();
@@ -114,8 +105,24 @@ GameEngineClass = Class.create({
 		return newEntity;
 	},
 	
+	kill: function(entity){
+		for(var i = 0; i < this.dynamicEntities.length; i++){
+			if(entity == this.dynamicEntities[i])
+				break;
+		}
+		if(i==this.dynamicEntities.length){
+			console.log('Could not find entity to kill', entity);
+			return;
+		}
+		
+		this.dynamicEntities.splice(i, 1);
+		if(entity.physBody)		// will be false for animations.
+			this.physEngine.removeBody(entity.physBody);
+	},
+	
 	spawnAnimation: function(name, aPos, aProperties, aCallback){
 		var newAnimation = new (this.factory[name])(this, aPos, aProperties, aCallback);
+		// var newAnimation = this.factory[name].getInstance(this, aPos, aProperties, aCallback);
 		this.dynamicEntities.push(newAnimation);
 		return newAnimation;
 	},

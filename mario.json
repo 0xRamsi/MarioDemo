@@ -36,12 +36,11 @@
 		"gravity": {"x": 0, "y": 250},
 		"viewpoint": "top",
 		"ground": [
-			{"x":1, "y": 27, "w": 30, "h": 2},
-			{"x":31, "y": 27, "w": 30, "h": 2},
-			{"x":61, "y": 27, "w": 30, "h": 2},
-			{"x":91, "y": 27, "w": 30, "h": 2},
-			{"x": 260, "y": 27, "w": 30, "h": 2},
-			{"x": 300, "y": 27, "w": 30, "h": 2}
+			{"x":0, "y": 27, "w": 30, "h": 2},
+			{"x":30, "y": 27, "w": 30, "h": 2},
+			{"x":62, "y": 27, "w": 30, "h": 2},
+			{"x":92, "y": 27, "w": 30, "h": 2},
+			{"x": 260, "y": 27, "w": 30, "h": 2}
 		],
 		"camera": {
 			"StartPos": null,
@@ -51,11 +50,6 @@
 	},
 	
 	"entities": {
-		"Mario": {
-			"pos": {"x": 15, "y": 27},
-			"properties": null,
-			"type": "MarioSmall"
-		},
 		"f": {
 			"pos": {"x": 40, "y": 13},
 			"properties": null,
@@ -92,17 +86,17 @@
 			"type": "Wall"
 		},
 		"Tube1": {
-			"pos": {"x": 40, "y": 21.1},
+			"pos": {"x": 20, "y": 21.1},
 			"properties": null,
 			"type": "Tube"
 		},
 		"Tube2": {
-			"pos": {"x": 60, "y": 21.1},
+			"pos": {"x": 40, "y": 21.1},
 			"properties": null,
 			"type": "Tube"
 		},
 		"Goomba1": {
-			"pos": {"x": 35, "y": 26.5},
+			"pos": {"x": 50, "y": 26.5},
 			"properties": null,
 			"type": "Goomba"
 		}
@@ -113,16 +107,21 @@
 			"type": "DeadBlock"
 		},
 		
-		"testMushroom": {
+		"Mushroom": {
 			"pos": {"x": 30, "y": 26},
 			"properties": null,
 			"type": "Mushroom"
 		},
-		
-		"testMushroom1": {
-			"pos": {"x": 20, "y": 26},
+		"Castle": {
+			"pos": {"x": 100, "y": 13.1},
 			"properties": null,
-			"type": "Mushroom"
+			"type": "Castle"
+		},
+		
+		"Mario": {
+			"pos": {"x": 93, "y": 27},
+			"properties": null,
+			"type": "MarioSmall"
 		}
 	}
 }

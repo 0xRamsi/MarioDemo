@@ -1,41 +1,37 @@
 /*
 	AnimationClass is a class for animations, like Mario dying, bricks being 
 destroyed, and anything that happens in the world, but should not affect the 
-flow of physics.
-These objects have a physics body, so they are affecetd by gravity, but their 
-maskBits are set to 0 (will never collide with objects).
+flow of game and/or physical world.
+These objects have no physics body, so they should mimic gravity in the update
+method (if appropriate).
 */
 
-AnimationClass = Class.create(EntityClass, {
+AnimationClass = Class.create({
 	time: 50,
+	img: null,
+	pos: null,
+	absolute: false,
+	name: null,
+	zIndex: 99,
 	game: null,
-	callback: null,
 	
-	initialize: function($super, aGame, anImage, aPos, aProperties, aCallback){
-		var props = {
-			physics: {
-				fixed: false,
-				collisionGroup: 32,
-				maskBits: 32
-			},
-			userData: {},
-			other: {
-				zIndex: 30
+	initialize: function(aGame, anImageList, aProps, aCallback){
+		this.imgs = new MovingImagesClass(anImageList, 20);
+		this.size = {w: 50, h: 30};
+		
+		if(aProps){
+			this.name = 'Background object';
+			for(var key in aProps){
+				this[key] = aProps[key];
 			}
 		}
 		
-		if(aProperties)
-			if(aProperties.time)
-				this.time = aProperties.time;
-			else
-				this.time = 400;
-		
-		gUtil.copyProperties(props, aProperties);
-		
-		$super(aGame, anImage, aPos, props);
 		this.game = aGame;
-		if(aCallback)
-			this.callback = aCallback
+		this.callback = aCallback;
+	},
+	
+	die: function(){
+		this.game.kill(this);
 	},
 	
 	update: function(){
@@ -45,109 +41,146 @@ AnimationClass = Class.create(EntityClass, {
 			this.game.paused = false;
 			if(this.callback)
 				this.callback();
-			return;
 		}
+	},
+	
+	getImage: function(){
+		return this.imgs.getImage();
+	},
+	
+	getPosition: function(){
+		return this.pos;
+	},
+	
+	getAngle: function(){
+		return 0;
 	}
 });
 
 DyingGoomba = Class.create(AnimationClass, {
+	
 	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 150,
-			physics: {
-				size: {w: 1.5, h:1.5}
-			},
-			userData: {
-				name: 'dying Goomba'
-			},
-			other: {}
+			pos: aPos,
+			size: {w: 1.5, h: 1.5},
+			name: 'dying goomba'
 		}
-		gUtil.copyProperties(props, aProperties);
+		$super(
+			aGame,
+			[gCachedData['GoombaDead']],
+			props, null
+		);
 		
-		$super(aGame, gCachedData['GoombaDead'], aPos, props, aCallback);
-	},
-	
-	onTouch: function(other, contact, impulse){}
+	}
 });
+
 
 DyingMario = Class.create(AnimationClass, {
 	state: [],
-	joint: null,
+	fallSpeed: 0.1,
 	
 	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
-			time: 400,
-			physics: {
-				collisionGroup: 0,		// Do not collide.
-				maskBits: 0,			// Do not collide.
-				size: {w: 1.5, h:1.5}
-			},
-			userData: {
-				name: 'dying Mario'
-			}
+			time: 160,
+			pos: aPos,
+			size: {w: 1.5, h:1.5},
+			name: 'dying Mario'
 		}
-		gUtil.copyProperties(props, aProperties);
-		this.state = [30, 30, 80];		// going up/hanging/down.
-		$super(aGame, gCachedData['marioDead'], aPos, props, aCallback);
+		// props.pos.y -= 10;
+		
+		this.state = [50, 30, 80];		// going up/hanging/down.
+		$super(aGame, [gCachedData['marioDead']], props, aCallback);
 	},
 	
-	update: function(){
-		var body = this.physBody.GetBody();
-		if(this.state[0]){
-			--this.state[0];
-			var speed = new this.game.physEngine.b2Vec2(0, -15);
-			body.SetLinearVelocity(speed);
-		}else if(this.state[1]){
-			--this.state[1];
-			if(this.joint == null){
-				var g = this.game.getGround().physBody.GetBody();
-				var body = this.physBody.GetBody();
-				var v1 = body.GetPosition();
-				var v2 = body.GetPosition();
-
-				var jointDef = new Box2D.Dynamics.Joints.b2DistanceJointDef;
-				jointDef.Initialize(g, body, v1, v2);
-				jointDef.collideConnected = true;
-				jointDef.maxForce = 300.0 * g.GetMass();
-				this.joint = this.game.physEngine.world.CreateJoint(jointDef);
+	update: function($super){
+			$super();
+			if(this.state[0]){
+				// Go up
+				--this.state[0];
+				this.pos.y -= 0.1;
+			}else if(this.state[1]){
+				// Just hang there.
+				--this.state[1];
+			}else if(this.state[2]){
+				// Go down
+				--this.state[2];
+				this.pos.y += this.fallSpeed;
+				this.fallSpeed += 0.05;
 			}
-		}else if(this.state[2]){
-			--this.state[2];
-			if(this.joint){
-				this.game.physEngine.world.DestroyJoint(this.joint);
-				this.joint = null;
-			}
-		}else{
-			stop();
+			console.log(this.pos.y)
 		}
-	}
 });
 
 ChangeMarioSizeClass = Class.create(AnimationClass, {
 	initialize: function($super, aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 180,
-			physics: {
-				size: {w: 1.5, h: 3}	//random;
-			},
-			userData: {
-				name: 'change Mario size'
-			}
+			pos: aPos,
+			size: {w: 1.5, h: 3},
+			name: 'change Mario size'
 		}
-		gUtil.copyProperties(props, aProperties);
 		
 		// TODO: Big mario and small mario are scalled to 1.5x3 world size, so the
 		// animation looks wired. Make one appear small and one big.
 		
-		$super(aGame, gCachedData['marioStand'], aPos, props, aCallback);
+		$super(
+			aGame,
+			[gCachedData['marioStand-big'], gCachedData['marioStand-small']],
+			props,
+			aCallback);
+			
 		aGame.paused = true;
-		this.imgs = new MovingImagesClass(
-				[gCachedData['marioStand-big'],
-				gCachedData['marioStand-small']],
-				20);
+	}
+});
+
+FireworksClass = Class.create(AnimationClass, {
+	state: 0,
+	castlePos: null,
+	
+	initialize: function($super, aGame, aPos, aProperties, aCallback){
+		this.castlePos = aGame.castle.getPosition();
+		var props = {
+			time: 500,
+			pos: this._calculateNewPosition(),
+			size: {w: 0.3, h: 0.3},
+			name: 'fireworks'
+		}
+		
+		$super(aGame, [gCachedData['fireworks']], props, aCallback);
 	},
 	
-	getImage: function(){
-		return this.imgs.getImage();
+	_calculateNewPosition: function(){
+		var dx, dy;
+		var angle, dist;
+		
+		dist = Math.random() * 2 + 14;
+		angle = Math.random() * Math.PI;
+		
+		dx = Math.cos(angle) * dist;
+		dy = Math.sin(angle) * dist;
+		
+		var t = {x: dx + this.castlePos.x, y: this.castlePos.y - dy}
+		
+		return t;
+	},
+	
+	update: function($super){
+		$super();
+		
+		++this.state;
+		
+		if(this.state == 30){
+			this.size = {w: 0.6, h: 0.6};
+		}
+		if(this.state == 60){
+			this.size = {w: 1, h: 1};
+		}
+		if(this.state == 100){
+			this.state = 0;
+			this.pos = this._calculateNewPosition();
+			this.size = {w: 0.3, h: 0.3};
+		}
+		
 	}
 });

@@ -20,12 +20,10 @@ BGClass = Class.create({
 		this.game = aGame;
 		
 		if(aProps){
+			this.name = 'Background object';
 			for(var key in aProps){
 				this[key] = aProps[key];
 			}
-			
-			if(!(aProps.name))
-				this.name = 'Background object';
 		}
 	},
 	

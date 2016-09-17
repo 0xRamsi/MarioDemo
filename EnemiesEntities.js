@@ -27,7 +27,8 @@ EnemyGoombaClass = Class.create(EntityClass, {
 	
 	update: function(){
 		if(this.isDead){
-			this.game.spawnAnimation('DyingGoomba', this.getPosition(), null);
+			if(this.getPosition().y < 30)
+				this.game.spawnAnimation('DyingGoomba', this.getPosition(), null);
 			this.die();
 			return;
 		}
