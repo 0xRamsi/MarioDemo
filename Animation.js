@@ -108,7 +108,6 @@ DyingMario = Class.create(AnimationClass, {
 				this.pos.y += this.fallSpeed;
 				this.fallSpeed += 0.05;
 			}
-			console.log(this.pos.y)
 		}
 });
 

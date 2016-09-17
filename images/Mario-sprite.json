@@ -246,6 +246,33 @@
 	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
+},
+"mountain":
+{
+	"frame": {"x":317,"y":674,"w":208,"h":82},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bush-small":
+{
+	"frame": {"x":535,"y":685,"w":140,"h":70},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bush-big":
+{
+	"frame": {"x":5,"y":687,"w":278,"h":70},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
 }
 }
 }

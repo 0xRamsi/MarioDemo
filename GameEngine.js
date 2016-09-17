@@ -64,7 +64,6 @@ GameEngineClass = Class.create({
 	},
 	
 	update: function(){
-		console.log(this.dynamicEntities.length)
 		for(var i = 0; i < this.dynamicEntities.length; i++){
 			var element = this.dynamicEntities[i];
 			if(element.getPosition().y > 30){

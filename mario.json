@@ -30,7 +30,12 @@
 				{"img": "cloud-small", "pos": {"x":50,"y":3}},
 				{"img": "cloud-small", "pos": {"x":70,"y":5}},
 				{"img": "cloud-big", "pos": {"x":90,"y":4}},
-				{"img": "cloud-small", "pos": {"x":110,"y":4.4}}
+				{"img": "cloud-small", "pos": {"x":110,"y":4.4}},
+				{"img": "mountain", "pos": {"x": 33, "y": 25.4}},
+				{"img": "mountain", "pos": {"x": 88, "y": 25.4}},
+				{"img": "bush-small", "pos": {"x": 70, "y": 25.7}},
+				{"img": "bush-small", "pos": {"x": 108, "y": 25.7}},
+				{"img": "bush-big", "pos": {"x": 10, "y": 25.7}}
 			]
 		},
 		"gravity": {"x": 0, "y": 250},
@@ -50,39 +55,134 @@
 	},
 	
 	"entities": {
-		"f": {
-			"pos": {"x": 40, "y": 13},
+		"Firebar": {
+			"pos": {"x": 37, "y": 13},
 			"properties": null,
 			"type": "FireBar"
 		},
-		"Wall": {
-			"pos": {"x": 30, "y": 10},
+		"Brick0": {
+			"pos": {"x": 23, "y": 16},
 			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
-		"Wall2": {
+		"Brick1": {
+			"pos": {"x": 24.5, "y": 16},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick2": {
+			"pos": {"x": 26, "y": 14},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick3": {
+			"pos": {"x": 27.5, "y": 14},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick4": {
+			"pos": {"x": 29, "y": 14},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick5": {
+			"pos": {"x": 31, "y": 10},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick6": {
+			"pos": {"x": 32.5, "y": 10},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick7": {
+			"pos": {"x": 34, "y": 10},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"BrickRotated": {
 			"pos": {"x": 30, "y": 20},
 			"properties": {"rotation": 1},
 			"type": "Wall"
 		},
-		"w": {
-			"pos": {"x": 60, "y": 10},
+		"Brick9": {
+			"pos": {"x": 40, "y": 17},
 			"properties": null,
 			"type": "Wall"
 		},
-		"W1": {
-			"pos": {"x": 90, "y": 10},
-			"properties": null,
+		"Brick9": {
+			"pos": {"x": 41, "y": 17},
+			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
-		"W2": {
-			"pos": {"x": 120, "y": 10},
-			"properties": null,
+		"Brick10": {
+			"pos": {"x": 42.5, "y": 17},
+			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
-		"W3": {
-			"pos": {"x": 150, "y": 10},
-			"properties": null,
+		"Brick11": {
+			"pos": {"x": 44, "y": 17},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick12": {
+			"pos": {"x": 45.5, "y": 15},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick13": {
+			"pos": {"x": 47, "y": 15},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick14": {
+			"pos": {"x": 48.5, "y": 15},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick15": {
+			"pos": {"x": 50, "y": 15},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick16": {
+			"pos": {"x": 51.5, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick17": {
+			"pos": {"x": 53, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick18": {
+			"pos": {"x": 54.5, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick19": {
+			"pos": {"x": 56, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick20": {
+			"pos": {"x": 57.5, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick21": {
+			"pos": {"x": 59, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick22": {
+			"pos": {"x": 60.5, "y": 13},
+			"properties": {"rotation": 0},
+			"type": "Wall"
+		},
+		"Brick23": {
+			"pos": {"x": 62, "y": 13},
+			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"Tube1": {
@@ -91,7 +191,12 @@
 			"type": "Tube"
 		},
 		"Tube2": {
-			"pos": {"x": 40, "y": 21.1},
+			"pos": {"x": 38, "y": 21.1},
+			"properties": null,
+			"type": "Tube"
+		},
+		"Tube3": {
+			"pos": {"x": 58, "y": 21.1},
 			"properties": null,
 			"type": "Tube"
 		},
@@ -99,10 +204,10 @@
 			"pos": {"x": 50, "y": 26.5},
 			"properties": null,
 			"type": "Goomba"
-		}
+		},
 		
-		, "testblock": {
-			"pos": {"x": 20, "y": 20},
+		"DeadBrick": {
+			"pos": {"x": 20, "y": 10},
 			"properties": null,
 			"type": "DeadBlock"
 		},
@@ -119,7 +224,7 @@
 		},
 		
 		"Mario": {
-			"pos": {"x": 93, "y": 27},
+			"pos": {"x": 8, "y": 27},
 			"properties": null,
 			"type": "MarioSmall"
 		}

@@ -349,7 +349,6 @@ MarioBigClass = Class.create(MarioClass, {
 	
 	grow: function(){
 		// Do nothing - mario is big.
-		console.log(890)
 	},
 	
 	shrink: function(){
