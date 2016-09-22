@@ -187,6 +187,7 @@ MarioSmallClass = Class.create(MarioClass, {
 		$super(aGame, aPos, props);
 		this.movingState = MarioSmallClass.State.Standing;
 		this._jumpForce = new aGame.physEngine.b2Vec2(0, -90);
+		this.growSound = gCachedData['sounds/M1_PowerUp.wav'];
 	},
 	
 	changeState: function(name){
@@ -216,6 +217,8 @@ MarioSmallClass = Class.create(MarioClass, {
 		}.bind(this);
 		
 		this.game.spawnAnimation('ChangeMarioSize', pos, null, SpawnBigMario);
+		if(this.growSound.loaded)
+			this.game.SM.play(this.growSound);
 		this.die()
 	},
 	
@@ -329,6 +332,7 @@ MarioBigClass = Class.create(MarioClass, {
 		$super(aGame, aPos, props);
 		this.movingState = MarioBigClass.State.Standing;
 		this._jumpForce = new aGame.physEngine.b2Vec2(0, -180);
+		this.shrinkSound = gCachedData['sounds/M1_PowerDown.wav'];
 	},
 	
 	changeState: function(name){
@@ -362,6 +366,8 @@ MarioBigClass = Class.create(MarioClass, {
 		}.bind(this);
 		
 		this.game.spawnAnimation('ChangeMarioSize', pos, null, SpawnSmallMario);
+		if(this.shrinkSound.loaded)
+			this.game.SM.play(this.shrinkSound)
 		this.die();
 	}
 });

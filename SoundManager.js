@@ -35,13 +35,12 @@ SoundManager = Class.create({
 		this.enabled = !this.enabled;
 	},
 	
-	play: function(name, settings){
+	play: function(s, settings){
 		// Assumes the sound has been loaded.
-		if(!this.enabled){
+		if(!(this.enabled)){
 			return;
 		}
-		var s = gCachedData[name];
-		if(!s.loaded)
+		if(!(s.loaded))
 			return;
 		var loop = false;
 		var volume = 1;

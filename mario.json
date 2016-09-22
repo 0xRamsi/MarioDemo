@@ -17,8 +17,10 @@
 	
 	"assets": [
 		"images/brick_wall.png",
+		"images/Mario-sprite.png",
 		
-		"images/Mario-sprite.png"
+		"sounds/M1_PowerUp.wav",
+		"sounds/M1_PowerDown.wav"
 	],
 
 	"world": {
