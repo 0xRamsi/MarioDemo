@@ -1,0 +1,50 @@
+# GameEngine
+------------
+
+As the name suggests, this is the heart of the game.
+This class has the `initialize` method which sets up the physics engine (creates a world), inits the Sound manager, sets up all Classes that will be created during the game in the factory and so on.
+
+The `update` method is the main loop of the game. It is called every 13 milliseconds. During each call the method has 4 phases:
+* Calls each entities 'update' method which lets the object react to input or any game event.
+* Trys to center the cameras position of the player.
+* Calls the 'step' method in the physics engine. This makes the engine detect and solve collisions, apply force to object (like gravity) and so on. This will update the position of objects and possibly call the 'onTouch' callback if a collision is detected.
+* The new state of the world is rendered to the screen.
+
+In addition to the two important methods that were just mentioned, this class handles spawning new entities or animations, killing entities.
+
+# Physics Engine
+----------------
+
+This is the second most important class in the game. It provides an interface between the game entities and the Box2D engine. It takes care of the creation of objects in the Box2D world, destroying them, and has a utility method that help making sense of collisions.
+
+# Renderer
+----------
+
+This is the only class that draws objects to the screen (the canvas element). The 'draw' method is called by the GameEngine during the last step of the 'update' method. It is also the only place where locations from the game world are translated into pixel coordinates.
+This class also holds a pointer to the camera and updates the cameras position upon requests.
+
+# AssetLoader
+-------------
+
+This class loads the assets required for the game. It first downloads a file called 'mario.json', then it executes the following steps:
+1. Loads the game code
+2. Calls the 'eval' method on the code
+3. Loads the assets (pics, sounds, etc.)
+4. Starts the game.
+These steps are preformed in that order to aviod null pointers for images and similar things.
+
+This class has a 'downloaders' field which specifies callback functions for each file extention. So when a new file format needs to be supported, only a new callback for the given extention should be added there.
+
+It is worth noting that this class takes advantage of the Continuation-passing style. It makes the flow more concurrent and the methods more readable, while handling the callback nature of XHR requests.
+
+# Entity
+--------
+
+This is the main class representing entities in the game. Form the Mario to the bricks to the ground, everything is inheriting from this class with exception to background entities and animations.
+Instances of this class (and it's child classes) have a physBody, which is a handle to the rigit body object in the Box2D world.
+It may be worth to note the 'Obstacle' subclass, which represents entities which are static, and therefore have no logic, but are merely drawn to the canvas.
+
+# Animation
+-----------
+
+This class implements animations, which are occurences in the game which have a visual effect, but do no alter the physics in the game flow. For example a dead Goomba, is visible on the screen, but Mario can walk through it without being affected in any way. Instances on this class have no rigit body in the Box2D world.
