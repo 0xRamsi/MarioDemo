@@ -205,3 +205,17 @@ FireworksClass = Class.create(AnimationClass, {
 		
 	}
 });
+
+
+WasdClass = Class.create(AnimationClass, {
+	initialize: function($super, aGame, aProperties, aCallback){
+		var props = {
+			time: 500,
+			pos: {x: 5, y: 5},
+			size: {w: 7, h: 5},
+			name: 'wasd'
+		}
+		
+		$super(aGame, [gCachedData['images/wasd.png']], props, aCallback);
+	}
+})

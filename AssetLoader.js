@@ -217,7 +217,7 @@ AssetLoader = {
 			this.currentGame = new GameEngineClass(levelStruct.world);
 			this.currentGame.setup(levelStruct.entities, levelStruct.world.camera);
 			canvas.focus();
-			gameLoop = setInterval(this.currentGame.update.bind(this.currentGame), 10);
+			gameLoop = setInterval(this.currentGame.update.bind(this.currentGame), 13);
 		}.bind(this);
 
 		var fileName = i + '.json';

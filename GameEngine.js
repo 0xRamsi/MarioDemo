@@ -29,6 +29,7 @@ GameEngineClass = Class.create({
 		this.factory['DyingMario'] = DyingMario;
 		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
 		this.factory['Fireworks'] = FireworksClass;
+		this.factory['Wasd'] = WasdClass;
 		
 		this.physEngine = new PhysicsEngineClass(worldProps.gravity);
 		this.SM = new SoundManager();
@@ -55,6 +56,8 @@ GameEngineClass = Class.create({
 			if(name == 'Castle')
 				this.castle = e;
 		}
+		
+		this.spawnAnimation("Wasd", {x: 5, y: 5}, null);
 	},
 	
 	prepareGameEnd: function(){
