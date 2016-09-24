@@ -17,7 +17,7 @@ MarioClass = Class.create(EntityClass, {
 	movingState: null,
 	Directions: {LEFT: -1, RIGHT: 1},
 	dispatched: [],
-	isImmune: 300,
+	isImmune: 200,
 	
 	initialize: function($super, aGame, aPos, aProperties){
 		$super(aGame, gCachedData['marioStand-small'], aPos, aProperties);
@@ -148,7 +148,11 @@ MarioClass = Class.create(EntityClass, {
 	},
 	
 	getImage: function(){
-		return this.movingState.getImage();
+		var img = this.movingState.getImage();
+		if((~~(this.isImmune/20)) % 2){
+			return gCachedData['empty'];
+		}
+		return img;
 	},
 	
 	grow: function(){

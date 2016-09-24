@@ -80,7 +80,9 @@ TubeClass = Class.create(ObsticleClass, {
 		// so this will dictate the tubes height.
 		var props = {
 			physics: {size: {w: 3, h: 6}},
-			userData: {name: 'Tube'}}
+			userData: {name: 'Tube'},
+			other: {zIndex: 10}
+		}
 		aPos.y += props.physics.size.h/2;
 		$super(aGame, aPos, gCachedData['tube.png'], props);
 	}

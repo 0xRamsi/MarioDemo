@@ -41,12 +41,10 @@ EntityClass = Class.create({
 		this.size = props.physics.size;
 		this.physBody = aGame.physEngine.createBox(aPos, this.size, props);
 		
-		if(aProperties){
-			if(aProperties.rotation)
-				this.physBody.GetBody().SetAngle(aProperties.rotation);
-			if(aProperties.other && aProperties.other.zIndex)
-				this.zIndex = aProperties.other.zIndex;
-		}
+		if(props.rotation)
+			this.physBody.GetBody().SetAngle(props.rotation);
+		if(props.other && props.other.zIndex)
+			this.zIndex = props.other.zIndex;
 		
 		this.game = aGame;
 		this.img = anImage;
