@@ -18,7 +18,10 @@ EnemyGoombaClass = Class.create(EntityClass, {
 		gUtil.copyProperties(props, aProperties);
 		$super(aGame, gCachedData['Goomba1'], aPos, props);
 		this.imgs = new MovingImagesClass(
-			[gCachedData['Goomba1'], gCachedData['Goomba2']], 50);
+			[gCachedData['Goomba1'], gCachedData['Goomba2']], 50
+		);
+		this.dieSound = gCachedData['sounds/WU_SE_EMY_DOWN_COMBO_1.wav'];
+		console.log(this.dieSound)
 	},
 	
 	getImage: function(){
@@ -27,8 +30,11 @@ EnemyGoombaClass = Class.create(EntityClass, {
 	
 	update: function(){
 		if(this.isDead){
-			if(this.getPosition().y < 30)
+			if(this.getPosition().y < 30){
 				this.game.spawnAnimation('DyingGoomba', this.getPosition(), null);
+				if(this.dieSound.loaded)
+					this.game.SM.play(this.dieSound);
+			}
 			this.die();
 			return;
 		}

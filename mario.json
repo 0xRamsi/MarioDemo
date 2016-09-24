@@ -21,7 +21,8 @@
 		"images/wasd.png",
 		
 		"sounds/M1_PowerUp.wav",
-		"sounds/M1_PowerDown.wav"
+		"sounds/M1_PowerDown.wav",
+		"sounds/WU_SE_EMY_DOWN_COMBO_1.wav"
 	],
 
 	"world": {
