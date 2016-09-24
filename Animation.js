@@ -87,7 +87,6 @@ DyingMario = Class.create(AnimationClass, {
 			size: {w: 1.5, h:1.5},
 			name: 'dying Mario'
 		}
-		// props.pos.y -= 10;
 		
 		this.state = [50, 30, 80];		// going up/hanging/down.
 		$super(aGame, [gCachedData['marioDead']], props, aCallback);

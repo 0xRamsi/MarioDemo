@@ -233,6 +233,8 @@ AssetLoader = {
 		clearInterval(gameLoop);
 		this.currentGame.prepareGameEnd();
 		gameLoop = null;
+		document.getElementById('canvasDebug').style.display = 'none';
+		document.getElementById('reloadButton').style.visibility = 'visible';
 	}
 };
 

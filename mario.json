@@ -65,37 +65,37 @@
 		},
 		"Brick0": {
 			"pos": {"x": 23, "y": 17},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick1": {
 			"pos": {"x": 24.5, "y": 17},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick2": {
 			"pos": {"x": 26, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick3": {
 			"pos": {"x": 27.5, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick4": {
 			"pos": {"x": 29, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick5": {
 			"pos": {"x": 31, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick6": {
 			"pos": {"x": 32.5, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick7": {
@@ -104,7 +104,7 @@
 			"type": "Wall"
 		},
 		"BrickRotated": {
-			"pos": {"x": 30, "y": 20},
+			"pos": {"x": 30, "y": 5},
 			"properties": {"rotation": 1},
 			"type": "Wall"
 		},
@@ -115,77 +115,77 @@
 		},
 		"Brick9": {
 			"pos": {"x": 41, "y": 17},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick10": {
 			"pos": {"x": 42.5, "y": 17},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick11": {
 			"pos": {"x": 44, "y": 17},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick12": {
 			"pos": {"x": 45.5, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick13": {
 			"pos": {"x": 47, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick14": {
 			"pos": {"x": 48.5, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick15": {
 			"pos": {"x": 50, "y": 15},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick16": {
 			"pos": {"x": 51.5, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick17": {
 			"pos": {"x": 53, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick18": {
 			"pos": {"x": 54.5, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick19": {
 			"pos": {"x": 56, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick20": {
 			"pos": {"x": 57.5, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick21": {
 			"pos": {"x": 59, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick22": {
 			"pos": {"x": 60.5, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Brick23": {
 			"pos": {"x": 62, "y": 13},
-			"properties": {"rotation": 0},
+			"properties": null,
 			"type": "Wall"
 		},
 		"Tube1": {
