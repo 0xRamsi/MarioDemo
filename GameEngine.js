@@ -30,6 +30,7 @@ GameEngineClass = Class.create({
 		this.factory['ChangeMarioSize'] = ChangeMarioSizeClass;
 		this.factory['Fireworks'] = FireworksClass;
 		this.factory['Wasd'] = WasdClass;
+		this.factory['BreakBrick'] = BreakBrickClass;
 		
 		this.physEngine = new PhysicsEngineClass(worldProps.gravity);
 		this.SM = new SoundManager();
@@ -85,8 +86,8 @@ GameEngineClass = Class.create({
 	},
 	
 	getGround: function(){
-		// Returning a randoms static entity, since it will be used as an ancor
-		// for joints.
+		// Returning a randoms static entity, since it will be used as an
+		// ancor for joints.
 		return this.staticEntities[0];
 	},
 	
@@ -112,21 +113,31 @@ GameEngineClass = Class.create({
 			if(entity == this.dynamicEntities[i])
 				break;
 		}
-		if(i==this.dynamicEntities.length){
-			console.log('Could not find entity to kill', entity);
+		if(i < this.dynamicEntities.length){
+			this.dynamicEntities.splice(i, 1);
+			if(entity.physBody)		// will be false for animations.
+				this.physEngine.removeBody(entity.physBody);
 			return;
 		}
 		
-		this.dynamicEntities.splice(i, 1);
-		if(entity.physBody)		// will be false for animations.
+		for(i = 0; i < this.staticEntities.length; i++){
+			if(entity == this.staticEntities[i])
+				break;
+		}
+		if(i < this.staticEntities.length){
+			this.staticEntities.splice(i, 1);
 			this.physEngine.removeBody(entity.physBody);
+			return;
+		}
+		
+		console.log('Could not find entity to kill', entity);
+		return;
 	},
 	
 	spawnAnimation: function(name, aPos, aProperties, aCallback){
-		var newAnimation = new (this.factory[name])(this, aPos, aProperties, aCallback);
-		// var newAnimation = this.factory[name].getInstance(this, aPos, aProperties, aCallback);
-		this.dynamicEntities.push(newAnimation);
-		return newAnimation;
+		var newAnimation = (this.factory[name]).create(this, aPos, aProperties, aCallback);
+		for(var i=0; i<newAnimation.length; i++)
+			this.dynamicEntities.push(newAnimation[i]);
 	},
 	
 	contactHandler: function(contact, impulse){

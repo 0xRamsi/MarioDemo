@@ -26,6 +26,30 @@ BrickClass = Class.create(ObsticleClass, {
 		aProperties.userData['name'] = 'Brick wall';
 		aProperties.physics.size = {w: 1.5, h: 1.5};
 		$super(aGame, aPos, gCachedData['images/brick_wall.png'], aProperties);
+		this.dieSound = gCachedData['sounds/M1_BreakBlock.wav'];
+	},
+	
+	break: function(){
+		this.game.spawnAnimation("BreakBrick", this.getPosition());
+		if(this.dieSound.loaded)
+			this.game.SM.play(this.dieSound)
+		this.die();
+	},
+	
+	onTouch: function(other, contact, impulse){
+		if(contact.GetManifold().m_pointCount == 0){
+			return;		// Just a sanity check, should not get here.
+		}
+		
+		var x = this.game.physEngine.understandTheContact(contact);
+		// If the brick is hit from below.
+		if(x.dir == 'above' && x.b1 == this.physBody.GetBody()){
+			// If Mario hit the brick. Now nothing else could reach the
+			// brick from below, but it may happen with future enemies.
+			if(other == this.game.player.physBody.GetBody()){
+				this.game.player.interact(this);
+			}
+		}
 	}
 });
 

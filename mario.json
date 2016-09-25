@@ -17,12 +17,14 @@
 	
 	"assets": [
 		"images/brick_wall.png",
+		"images/brick_wall2-sprite.png",
 		"images/Mario-sprite.png",
 		"images/wasd.png",
 		
 		"sounds/M1_PowerUp.wav",
 		"sounds/M1_PowerDown.wav",
-		"sounds/WU_SE_EMY_DOWN_COMBO_1.wav"
+		"sounds/WU_SE_EMY_DOWN_COMBO_1.wav",
+		"sounds/M1_BreakBlock.wav"
 	],
 
 	"world": {

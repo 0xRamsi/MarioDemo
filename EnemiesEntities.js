@@ -21,7 +21,6 @@ EnemyGoombaClass = Class.create(EntityClass, {
 			[gCachedData['Goomba1'], gCachedData['Goomba2']], 50
 		);
 		this.dieSound = gCachedData['sounds/WU_SE_EMY_DOWN_COMBO_1.wav'];
-		console.log(this.dieSound)
 	},
 	
 	getImage: function(){

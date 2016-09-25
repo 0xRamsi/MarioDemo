@@ -88,7 +88,7 @@ MarioClass = Class.create(EntityClass, {
 			console.log('"interact" called from an object without a physBody', other);
 			return;
 		}
-
+		
 		switch(other.physBody.GetBody().GetUserData().name){
 			case "mushroom":
 				this.dispatched.push(this.grow);
@@ -96,6 +96,9 @@ MarioClass = Class.create(EntityClass, {
 			case "castle":
 				this.dispatched.push(this.finishLevel);
 				this.isImmune = 10;
+				return;
+			case "Brick wall":
+				this.dispatched.push(this.brick(other));
 				return;
 			default:
 				// Do nothing
@@ -208,6 +211,11 @@ MarioSmallClass = Class.create(MarioClass, {
 			case "ducking":
 				this.movingState = MarioSmallClass.State.Ducking;
 		}
+	},
+	
+	brick: function(brick){
+		return function(){};
+		// Nothing - small mario does not break bricks.
 	},
 	
 	grow: function(){
@@ -334,6 +342,7 @@ MarioBigClass = Class.create(MarioClass, {
 		MarioBigClass.State.Ducking.initialize(this);
 		
 		$super(aGame, aPos, props);
+		this.isImmune = 0;
 		this.movingState = MarioBigClass.State.Standing;
 		this._jumpForce = new aGame.physEngine.b2Vec2(0, -180);
 		this.shrinkSound = gCachedData['sounds/M1_PowerDown.wav'];
@@ -353,6 +362,10 @@ MarioBigClass = Class.create(MarioClass, {
 			case "ducking":
 				this.movingState = MarioBigClass.State.Ducking;
 		}
+	},
+	
+	brick: function(brick){
+		return function(){brick.break();};
 	},
 	
 	grow: function(){

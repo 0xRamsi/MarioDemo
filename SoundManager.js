@@ -25,7 +25,7 @@ SoundManager = Class.create({
 		try{
 			this._context = new (window.AudioContext || window.webkitAudioContext)();
 		}catch(e){
-			console.log('Not able to play sounds');
+			16('Not able to play sounds');
 		}
 		this._mainNode = this._context.createGain(0);
 		this._mainNode.connect(this._context.destination);

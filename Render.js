@@ -36,7 +36,7 @@ RendererClass = Class.create({
 	
 	requestCameraPos: function(x, y){
 		if(isNaN(x) || x == undefined){
-			console.log('The players position is not valid:', x);
+			16('The players position is not valid:', x);
 			return;		// Leave the camera unchanged.
 		}
 		

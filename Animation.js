@@ -36,7 +36,7 @@ AnimationClass = Class.create({
 	
 	update: function(){
 		--this.time;
-		if(this.time == 0){
+		if(this.time == 0 || this.isDead){
 			this.die();
 			this.game.paused = false;
 			if(this.callback)
@@ -57,63 +57,64 @@ AnimationClass = Class.create({
 	}
 });
 
-DyingGoomba = Class.create(AnimationClass, {
-	
-	initialize: function($super, aGame, aPos, aProperties, aCallback){
+DyingGoomba = {
+	create: function(aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 150,
 			pos: aPos,
 			size: {w: 1.5, h: 1.5},
 			name: 'dying goomba'
 		}
-		$super(
-			aGame,
-			[gCachedData['GoombaDead']],
-			props, null
-		);
+		return [new AnimationClass(aGame, [gCachedData['GoombaDead']], props, null)];
 		
 	}
-});
+};
 
 
-DyingMario = Class.create(AnimationClass, {
-	state: [],
-	fallSpeed: 0.1,
-	
-	initialize: function($super, aGame, aPos, aProperties, aCallback){
-		var props = {
-			time: 160,
-			pos: aPos,
-			size: {w: 1.5, h:1.5},
-			name: 'dying Mario'
-		}
+DyingMario = {
+	create: function(aGame, aPos, aProperties, aCallback){
+		var subclass = Class.create(AnimationClass, {
+			state: [50, 30, 80],		// going up/hanging/going down
+			fallSpeed: 0.1,
+			
+			initialize: function($super, aGame, aPos, aProperties, aCallback){
+				var props = {
+					time: 160,
+					pos: aPos,
+					size: {w: 1.5, h:1.5},
+					name: 'dying Mario'
+				}
 		
-		this.state = [50, 30, 80];		// going up/hanging/down.
-		$super(aGame, [gCachedData['marioDead']], props, aCallback);
+				$super(aGame, [gCachedData['marioDead']], props, aCallback);
+			},
+			
+			update: function($super){
+				$super();
+				if(this.state[0]){
+					// Go up
+					--this.state[0];
+					this.pos.y -= 0.1;
+				}else if(this.state[1]){
+					// Just hang there.
+					--this.state[1];
+				}else if(this.state[2]){
+					// Go down
+					--this.state[2];
+					this.pos.y += this.fallSpeed;
+					this.fallSpeed += 0.05;
+				}
+			}
+		});
+		
+		
+		return [new subclass(aGame, aPos, aProperties, aCallback)];
 	},
 	
-	update: function($super){
-			$super();
-			if(this.state[0]){
-				// Go up
-				--this.state[0];
-				this.pos.y -= 0.1;
-			}else if(this.state[1]){
-				// Just hang there.
-				--this.state[1];
-			}else if(this.state[2]){
-				// Go down
-				--this.state[2];
-				this.pos.y += this.fallSpeed;
-				this.fallSpeed += 0.05;
-			}
-		}
-});
+};
 
-ChangeMarioSizeClass = Class.create(AnimationClass, {
-	state: 0,
-	
-	initialize: function($super, aGame, aPos, aProperties, aCallback){
+
+ChangeMarioSizeClass = {
+	create: function(aGame, aPos, aProperties, aCallback){
 		var props = {
 			time: 180,
 			pos: aPos,
@@ -121,93 +122,99 @@ ChangeMarioSizeClass = Class.create(AnimationClass, {
 			name: 'change Mario size'
 		}
 		
-		// TODO: Big mario and small mario are scalled to 1.5x3 world size, so the
-		// animation looks wired. Make one appear small and one big.
-		
-		$super(
+		var animation = new AnimationClass(
 			aGame,
 			[gCachedData['marioStand-big'], gCachedData['marioStand-small']],
 			props,
-			aCallback);
+			aCallback
+		);
 			
+		animation.state = 0;
+		animation.getImage = function($super){
+			++this.state;
+				
+			if(this.state < 20){
+				this.size = {w: 1.5, h: 1.5};
+				return gCachedData['marioStand-small']
+			}
+		
+			if(this.state < 40){
+				this.size = {w: 1.5, h: 3};
+				return gCachedData['marioStand-big'];
+			}
+		
+			if(this.state == 40){
+				this.state = 0;
+				return gCachedData['marioStand-big'];
+			}
+		}.bind(animation);
+
+
 		aGame.paused = true;
+		return [animation];
 	},
+};
+
+FireworksClass = {
+	create: function(aGame, aPos, aProperties, aCallback){
+		var subclass = Class.create(AnimationClass, {
+			state: 0,
+			castlePos: null,
+
+			initialize: function($super, aGame, aPos, aProperties, aCallback){
+				this.castlePos = aGame.castle.getPosition();
+				var props = {
+					time: 500,
+					pos: this._calculateNewPosition(),
+					size: {w: 0.3, h: 0.3},
+					name: 'fireworks'
+				}
 	
-	getImage: function($super){
-		// $super();
-		++this.state;
+				$super(aGame, [gCachedData['fireworks']], props, aCallback);
+			},
+
+			_calculateNewPosition: function(){
+				var dx, dy;
+				var angle, dist;
+	
+				dist = Math.random() * 2 + 14;
+				angle = Math.random() * Math.PI;
+	
+				dx = Math.cos(angle) * dist;
+				dy = Math.sin(angle) * dist;
+	
+				var t = {x: dx + this.castlePos.x, y: this.castlePos.y - dy}
+	
+				return t;
+			},
+
+			update: function($super){
+				$super();
+	
+				++this.state;
+	
+				if(this.state == 30){
+					this.size = {w: 0.6, h: 0.6};
+				}
+				if(this.state == 60){
+					this.size = {w: 1, h: 1};
+				}
+				if(this.state == 100){
+					this.state = 0;
+					this.pos = this._calculateNewPosition();
+					this.size = {w: 0.3, h: 0.3};
+				}
+	
+			}
+		});
 		
-		if(this.state < 20){
-			this.size = {w: 1.5, h: 1.5};
-			return gCachedData['marioStand-small']
-		}
-		
-		if(this.state < 40){
-			this.size = {w: 1.5, h: 3};
-			return gCachedData['marioStand-big'];
-		}
-		
-		if(this.state == 40){
-			this.state = 0;
-			return gCachedData['marioStand-big'];
-		}
+		return [new subclass(aGame, aPos, aProperties, aCallback)];
 	}
-});
-
-FireworksClass = Class.create(AnimationClass, {
-	state: 0,
-	castlePos: null,
-	
-	initialize: function($super, aGame, aPos, aProperties, aCallback){
-		this.castlePos = aGame.castle.getPosition();
-		var props = {
-			time: 500,
-			pos: this._calculateNewPosition(),
-			size: {w: 0.3, h: 0.3},
-			name: 'fireworks'
-		}
-		
-		$super(aGame, [gCachedData['fireworks']], props, aCallback);
-	},
-	
-	_calculateNewPosition: function(){
-		var dx, dy;
-		var angle, dist;
-		
-		dist = Math.random() * 2 + 14;
-		angle = Math.random() * Math.PI;
-		
-		dx = Math.cos(angle) * dist;
-		dy = Math.sin(angle) * dist;
-		
-		var t = {x: dx + this.castlePos.x, y: this.castlePos.y - dy}
-		
-		return t;
-	},
-	
-	update: function($super){
-		$super();
-		
-		++this.state;
-		
-		if(this.state == 30){
-			this.size = {w: 0.6, h: 0.6};
-		}
-		if(this.state == 60){
-			this.size = {w: 1, h: 1};
-		}
-		if(this.state == 100){
-			this.state = 0;
-			this.pos = this._calculateNewPosition();
-			this.size = {w: 0.3, h: 0.3};
-		}
-		
-	}
-});
+};
 
 
-WasdClass = Class.create(AnimationClass, {
-	initialize: function($super, aGame, aProperties, aCallback){
+WasdClass = {
+	create: function(aGame, aProperties, aCallback){
 		var props = {
 			time: 500,
 			pos: {x: 5, y: 5},
@@ -215,6 +222,83 @@ WasdClass = Class.create(AnimationClass, {
 			name: 'wasd'
 		}
 		
-		$super(aGame, [gCachedData['images/wasd.png']], props, aCallback);
+		return [new AnimationClass(aGame, [gCachedData['images/wasd.png']], props, aCallback)];
 	}
-})
+};
+
+BreakBrickClass = {
+	create: function(aGame, aPos, aProperties, aCallback){
+		var res = [];
+		
+		var subclass = Class.create(AnimationClass, {
+			initialize: function($super, aGame, aPos, aCallback, aProperties){
+				var props = {
+					time: 500,
+					pos: {x: aPos.x, y: aPos.y},
+					size: {w: 0.75, h: 0.75},
+					name: 'breaking brick'
+				}
+				
+				this.dx = aProperties.movement.dx;
+				this.dy = aProperties.movement.dy
+				this.dyForce = aProperties.movement.dyForce;
+				
+				$super(aGame, [aProperties.img], props, aCallback);
+				this.nameMe = aProperties.name;
+			},
+			
+			update: function($super){
+				$super();
+				
+				this.pos.x += this.dx;
+				this.pos.y += this.dy;
+				this.dy += this.dyForce;
+			}
+		});
+		
+		var m1 = {
+			dx: -0.2,
+			dy: -0.4,
+			dyForce: 0.02,
+		};
+		var props = {
+			img: gCachedData['t1'],
+			movement: m1,
+		}
+		res.push(new subclass(aGame, aPos, null, props));
+		
+		var m2 = {
+			dx: -0.1,
+			dy: -0.2,
+			dyForce: 0.02,
+		};
+		var props = {
+			img: gCachedData['t2'],
+			movement: m2,
+		}
+		res.push(new subclass(aGame, aPos, null, props));
+
+		var m3 = {
+			dx: 0.2,
+			dy: -0.4,
+			dyForce: 0.02,
+		};
+		var props = {
+			img: gCachedData['t3'],
+			movement: m3,
+		}
+		res.push(new subclass(aGame, aPos, null, props));
+		var m4 = {
+			dx: 0.1,
+			dy: -0.2,
+			dyForce: 0.02,
+		};
+		var props = {
+			img: gCachedData['t4'],
+			movement: m4,
+		}
+		res.push(new subclass(aGame, aPos, null, props));
+		/**/
+		return res;
+	}
+};

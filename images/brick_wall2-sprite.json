@@ -1,0 +1,42 @@
+{"frames": {
+	"t1":
+	{
+		"frame": {"x":0,"y":0,"w":16,"h":16},
+		"rotated": false,
+		"trimmed": false,
+		"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+		"sourceSize": {"w":16,"h":16},
+		"pivot": {"x":0,"y":0}
+	},
+	"t2":
+	{
+		"frame": {"x":0,"y":16,"w":16,"h":16},
+		"rotated": false,
+		"trimmed": false,
+		"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+		"sourceSize": {"w":16,"h":16},
+		"pivot": {"x":0,"y":0}
+	},
+	"t3":
+	{
+		"frame": {"x":16,"y":0,"w":16,"h":16},
+		"rotated": false,
+		"trimmed": false,
+		"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+		"sourceSize": {"w":16,"h":16},
+		"pivot": {"x":0,"y":0}
+	},
+	"t4":
+	{
+		"frame": {"x":16,"y":16,"w":16,"h":16},
+		"rotated": false,
+		"trimmed": false,
+		"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+		"sourceSize": {"w":16,"h":16},
+		"pivot": {"x":0,"y":0}
+	}
+},
+"meta": {
+	"some": "stuff"
+}
+}
