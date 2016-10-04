@@ -31,7 +31,7 @@ MarioClass = Class.create(EntityClass, {
 		if(this.isDead){
 			this.die();
 			if(this.getPosition().y > 30){
-				this.game.spawnAnimation('DyingMario', this.getPosition(), null, stop);
+				this.game.spawnAnimation('DyingMario', {x: this.getPosition().x, y: 27}, null, stop);
 			}
 		}
 		if(this.isImmune)
