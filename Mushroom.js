@@ -8,7 +8,7 @@ MushroomClass = Class.create(EntityClass, {
 		var props = {
 			physics: {
 				fixed: false,
-				size: {w: 1.5, h: 1.5}
+				size: {w: 1.4, h: 1.5}
 			},
 			userData: {
 				name: 'mushroom'

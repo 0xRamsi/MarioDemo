@@ -44,10 +44,10 @@ const server = http.createServer((req, res) => {
 	}catch(e){
 		res.statusCode = 404;
 		res.end();
-		16('Could not load ', url);
+		console.log('Could not load ', url);
 	}
 });
 
 server.listen(port, hostname, () => {
-	16(`Ramzi\`s server is running at http://${hostname}:${port}/`);
+	console.log(`Ramzi\`s server is running at http://${hostname}:${port}/`);
 	});

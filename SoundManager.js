@@ -24,11 +24,11 @@ SoundManager = Class.create({
 	initialize: function(){
 		try{
 			this._context = new (window.AudioContext || window.webkitAudioContext)();
+			this._mainNode = this._context.createGain(0);
+			this._mainNode.connect(this._context.destination);
 		}catch(e){
-			16('Not able to play sounds');
+			console.log('Not able to play sounds');
 		}
-		this._mainNode = this._context.createGain(0);
-		this._mainNode.connect(this._context.destination);
 	},
 	
 	toggleMute: function(){
@@ -36,27 +36,29 @@ SoundManager = Class.create({
 	},
 	
 	play: function(s, settings){
-		// Assumes the sound has been loaded.
-		if(!(this.enabled)){
-			return;
-		}
-		if(!(s.loaded))
-			return;
-		var loop = false;
-		var volume = 1;
-		if(settings){
-			if(settings.loop)
-				loop = settings.loop;
-			if(settings.volume)
-				volume = settings.volume;
-		}
+		try{
+			// Assumes the sound has been loaded.
+			if(!(this.enabled)){
+				return;
+			}
+			if(!(s.loaded))
+				return;
+			var loop = false;
+			var volume = 1;
+			if(settings){
+				if(settings.loop)
+					loop = settings.loop;
+				if(settings.volume)
+					volume = settings.volume;
+			}
 
-		var currentClip = this._context.createBufferSource();
-		currentClip.buffer = s.buffer;
-		currentClip.connect(this._mainNode);
-		currentClip.loop = loop;
+			var currentClip = this._context.createBufferSource();
+			currentClip.buffer = s.buffer;
+			currentClip.connect(this._mainNode);
+			currentClip.loop = loop;
 		
-		currentClip.start();
+			currentClip.start();
+		}catch(ignor){}
 	},
 	
 	stopAll: function(){

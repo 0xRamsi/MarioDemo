@@ -298,7 +298,80 @@ BreakBrickClass = {
 			movement: m4,
 		}
 		res.push(new subclass(aGame, aPos, null, props));
-		/**/
+		
 		return res;
 	}
 };
+
+YieldMushroomClass = {
+	create: function(aGame, aPos, aProperties, aCallback){
+		var subclass = Class.create(AnimationClass, {
+			initialize: function($super, aGame, aPos, aProperties, aCallback){
+				var props = {
+					time: 35,
+					pos: {x: aPos.x+0.05, y: aPos.y},
+					size: {w: 1.5, h: 1.5},
+					name: 'yield mushroom',
+					zIndex: 10
+				}
+				
+				var callback = function(){
+					aGame.spawnEntity("Mushroom", this.pos, null)
+				}
+				
+				$super(aGame, [gCachedData['mushroom']], props, callback);
+				if(aCallback)
+					aCallback();
+				this.mushroomAppearsSound = gCachedData['sounds/M1_PowerUpItemAppear.wav'];
+			},
+			
+			update: function($super){
+				$super();
+				this.pos.y -= 0.04;
+				if(this.mushroomAppearsSound && this.mushroomAppearsSound.loaded){
+					this.game.SM.play(this.mushroomAppearsSound);
+					this.mushroomAppearsSound = null;
+				}
+			}
+		});
+		
+		return [new subclass(aGame, aPos, aProperties, aCallback)];
+	}
+};
+
+YieldCoinClass = {
+	create: function(aGame, aPos, aProperties, aCallback){
+		var subclass = Class.create(AnimationClass, {
+			initialize: function($super, aGame, aPos, aProperties, aCallback){
+				var props = {
+					time: 15,
+					pos: {x: aPos.x, y: aPos.y},
+					size: {w: 1.5, h: 1.5},
+					name: 'yield coin',
+					zIndex: 10
+				}
+				
+				$super(aGame, [gCachedData['coin2']], props, aCallback);
+				
+				this.coinSound = gCachedData['sounds/M1_Coin.wav'];
+				this.imgs = new MovingImagesClass(
+					[gCachedData['coin1'], gCachedData['coin2'], gCachedData['coin3'], gCachedData['coin4']], 10);
+			},
+			
+			getImage: function(){
+				return this.imgs.getImage();
+			},
+			
+			update: function($super){
+				$super();
+				this.pos.y -= 0.1;
+				if(this.coinSound && this.coinSound.loaded){
+					this.game.SM.play(this.coinSound);
+					this.mushroomAppearsSound = null;
+				}
+			}
+		});
+		
+		return [new subclass(aGame, aPos, aProperties, aCallback)];
+	}
+}

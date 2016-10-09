@@ -100,6 +100,9 @@ MarioClass = Class.create(EntityClass, {
 			case "Brick wall":
 				this.dispatched.push(this.brick(other));
 				return;
+			case "Question Brick":
+				this.dispatched.push(other.giveReward.bind(other));
+				return;
 			default:
 				// Do nothing
 		}

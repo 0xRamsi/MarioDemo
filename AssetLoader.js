@@ -51,7 +51,7 @@ AssetLoader = {
 			
 			var i = new Image();
 			i.onload = c
-			i.onerror = function(e){16(e)}
+			i.onerror = function(e){console.log(e)}
 			i.src = file;
 		},
 		'-sprite.png': function(file, save, count){
@@ -97,7 +97,7 @@ AssetLoader = {
 				try{
 					audio_context = new (window.AudioContext || window.webkitAudioContext)();
 				}catch(e){
-					16('Not able to play sounds');
+					console.log('Not able to play sounds');
 				}
 				
 				var x = {
@@ -118,7 +118,7 @@ AssetLoader = {
 			gUtil.xhrGet(file, c, 'arraybuffer');
 		},
 		'default': function(file, cont){
-			16('We have no handler for this file:', file);
+			console.log('We have no handler for this file:', file);
 			cont();
 		}
 	},
@@ -157,7 +157,7 @@ AssetLoader = {
 			if(this.downloaders[extension]){
 				this.downloaders[extension](file, saveDataToCache, countAsset);
 			}else{
-				16('We have no handler for this file:', file);
+				console.log('We have no handler for this file:', file);
 			}
 		}
 	},
@@ -231,7 +231,9 @@ AssetLoader = {
 	unloadLevel: function(){
 		// TODO: Remove assets or not?
 		clearInterval(gameLoop);
-		this.currentGame.prepareGameEnd();
+		try{
+			this.currentGame.prepareGameEnd();
+		}catch(ignor){}
 		gameLoop = null;
 		document.getElementById('canvasDebug').style.display = 'none';
 		document.getElementById('reloadButton').style.visibility = 'visible';

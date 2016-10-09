@@ -24,7 +24,9 @@
 		"sounds/M1_PowerUp.wav",
 		"sounds/M1_PowerDown.wav",
 		"sounds/WU_SE_EMY_DOWN_COMBO_1.wav",
-		"sounds/M1_BreakBlock.wav"
+		"sounds/M1_BreakBlock.wav",
+		"sounds/M1_PowerUpItemAppear.wav",
+		"sounds/M1_Coin.wav"
 	],
 
 	"world": {
@@ -227,6 +229,18 @@
 			"pos": {"x": 100, "y": 13.1},
 			"properties": null,
 			"type": "Castle"
+		},
+		
+		"questionBrick": {
+			"pos": {"x": 64, "y": 20},
+			"properties": {"reactionType": "YieldMushroom"},
+			"type": "QuestionBrick"
+		},
+		
+		"questionBrick1": {
+			"pos": {"x": 8, "y": 19},
+			"properties": {"reactionType": "YieldCoin"},
+			"type": "QuestionBrick"
 		},
 		
 		"Mario": {

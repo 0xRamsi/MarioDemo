@@ -5,7 +5,7 @@ AssetManager = {
 	
 	addAsset: function(name, object){
 		if(this.gCacheData[name]){
-			16('Warning. Asset already exists:', this.gCacheData[name]);
+			console.log('Warning. Asset already exists:', this.gCacheData[name]);
 			return;
 		}
 		this.gCacheData[name] = object;

@@ -78,7 +78,7 @@ BackgroundClass = {
 				);
 				res.push(w);
 			}catch(e){
-				16('cannot make background object', object);
+				console.log('cannot make background object', object);
 			}
 		}
 		

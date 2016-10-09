@@ -14,7 +14,7 @@ gUtil = {
 		
 		oReq.onload = callback;
 		oReq.onerror = function () {
-			16(type, callback);
+			console.log(type, callback);
 		}
 	
 		oReq.send(null);

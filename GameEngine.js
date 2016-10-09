@@ -24,6 +24,7 @@ GameEngineClass = Class.create({
 		this.factory['DeadBlock'] = DeadBlockClass;
 		this.factory['Mushroom'] = MushroomClass;
 		this.factory['Castle'] = CastleClass;
+		this.factory['QuestionBrick'] = QuestionBrickClass;
 		// Animations
 		this.factory['DyingGoomba'] = DyingGoomba;
 		this.factory['DyingMario'] = DyingMario;
@@ -31,6 +32,8 @@ GameEngineClass = Class.create({
 		this.factory['Fireworks'] = FireworksClass;
 		this.factory['Wasd'] = WasdClass;
 		this.factory['BreakBrick'] = BreakBrickClass;
+		this.factory['YieldMushroom'] = YieldMushroomClass;
+		this.factory['YieldCoin'] = YieldCoinClass;
 		
 		this.physEngine = new PhysicsEngineClass(worldProps.gravity);
 		this.SM = new SoundManager();

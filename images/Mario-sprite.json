@@ -282,6 +282,51 @@
 	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16},
 	"pivot": {"x":0.5,"y":0.5}
+},
+"questionBrick":
+{
+	"frame": {"x":660,"y":340,"w":58,"h":59},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"coin1":
+{
+	"frame": {"x":790,"y":194,"w":10,"h":14},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"coin2":
+{
+	"frame": {"x":805,"y":194,"w":10,"h":14},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"coin3":
+{
+	"frame": {"x":820,"y":194,"w":10,"h":14},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"coin4":
+{
+	"frame": {"x":837,"y":194,"w":10,"h":14},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":105,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16},
+	"pivot": {"x":0.5,"y":0.5}
 }
 }
 }
