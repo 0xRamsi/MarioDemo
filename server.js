@@ -10,6 +10,8 @@ const server = http.createServer((req, res) => {
 	
 	if(url == '/')
 		url = '/index.html';
+	if(url == '/ico/favicon.ico')
+		url = '/favicon.ico'
 	
 	var ext = url.split('.').pop();
 
@@ -20,7 +22,7 @@ const server = http.createServer((req, res) => {
 		case "js":
 			type = 'application/javascript';
 			break;
-		case 'json':
+		case "json":
 			type = 'application/json';
 			break;
 		case "png":
@@ -31,6 +33,12 @@ const server = http.createServer((req, res) => {
 			break;
 		case "wav":
 			type = 'audio/wav';
+			break;
+		case "css":
+			type = 'text/css';
+			break;
+		case "ico":
+			type = 'image/png';
 			break;
 		default:
 			type: 'text/html';
