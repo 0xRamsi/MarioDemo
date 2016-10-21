@@ -68,44 +68,9 @@
 			"properties": null,
 			"type": "FireBar"
 		},
-		"Brick0": {
-			"pos": {"x": 23, "y": 17},
-			"properties": null,
-			"type": "Wall"
-		},
 		"Brick1": {
 			"pos": {"x": 24.5, "y": 17},
 			"properties": null,
-			"type": "Wall"
-		},
-		"Brick2": {
-			"pos": {"x": 26, "y": 15},
-			"properties": null,
-			"type": "Wall"
-		},
-		"Brick3": {
-			"pos": {"x": 27.5, "y": 15},
-			"properties": null,
-			"type": "Wall"
-		},
-		"Brick4": {
-			"pos": {"x": 29, "y": 15},
-			"properties": null,
-			"type": "Wall"
-		},
-		"Brick5": {
-			"pos": {"x": 31, "y": 13},
-			"properties": null,
-			"type": "Wall"
-		},
-		"Brick6": {
-			"pos": {"x": 32.5, "y": 13},
-			"properties": null,
-			"type": "Wall"
-		},
-		"Brick7": {
-			"pos": {"x": 34, "y": 13},
-			"properties": {"rotation": 0},
 			"type": "Wall"
 		},
 		"BrickRotated": {
@@ -212,12 +177,6 @@
 			"pos": {"x": 50, "y": 26.5},
 			"properties": null,
 			"type": "Goomba"
-		},
-		
-		"DeadBrick": {
-			"pos": {"x": 20, "y": 10},
-			"properties": null,
-			"type": "DeadBlock"
 		},
 		
 		"Mushroom": {

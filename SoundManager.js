@@ -62,8 +62,10 @@ SoundManager = Class.create({
 	},
 	
 	stopAll: function(){
-		this._mainNode.disconnect();
-		this._mainNode = this._context.createGain(0);
-		this._mainNode.connect(this._context.destination);
+		try{
+			this._mainNode.disconnect();
+			this._mainNode = this._context.createGain(0);
+			this._mainNode.connect(this._context.destination);
+		}catch(e){};
 	}
 });
